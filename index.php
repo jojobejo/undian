@@ -119,24 +119,31 @@ require('config.php');
                     <button type="button" class="btn btn-block btn-success" id="btnBerhenti" disabled>Berhenti</button>
                 </div>
 
-                <div class="modal fade" id="modalPrize" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Modal</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
+                <div id="hasil-udian">
 
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
+                </div>
+            </div>
+
+            <div class="modal" tabindex="-1" role="dialog" id="modalPrize">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
+                        <div class="modal-body">
 
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </center>
     </div>
     <div class="container">
@@ -400,6 +407,7 @@ require('config.php');
                 $("#txtAwal").prop('disabled', false);
                 let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html() + $('#lblAngka4').html();
                 console.log(hasil);
+                $('#modalPrize').modal("show");
                 $.ajax({
                     type: "get",
                     url: urlGetDataUndian + '?id=' + hasil,
@@ -407,12 +415,8 @@ require('config.php');
                     success: function(response) {
                         $('#hasil-udian').append(`
                         <h3> ${response.nama_toko} </h3>
-                        <button type="button" class="btn btn-lg btn-warning mt-10" onclick='window.location.reload(true);' >Reset</button>
-                        modalPrize`
-                        );
-                        
-                        $('.modal-body').html(response);
-                        $('#modalPrize').modal('show');
+                            <button type="button" class="btn btn-lg btn-warning mt-10" onclick='window.location.reload(true);' >Reset</button>
+                        `);
                     }
                 });
 
