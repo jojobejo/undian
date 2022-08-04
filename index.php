@@ -16,6 +16,21 @@ require('config.php');
     <link href="css/bootstrap-grid.css" rel="stylesheet">
     <link href="css/bootstrap-reboot.css" rel="stylesheet">
     <link href="css/bootstrap-themes.css" rel="stylesheet">
+
+    <style>
+        .modalCenter {
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+        }
+
+        .h3Center {
+            text-align: center;
+        }
+        input{
+            text-align: center;
+        }
+
+    </style>
 </head>
 <!-- background-repeat: no-repeat; height:auto; background-size: cover; -->
 
@@ -93,9 +108,9 @@ require('config.php');
                         $rprize = mysqli_query($koneksi, $qprize);
                         ?>
                         <h3>Pilih Hadiah Yang Akan Di Undi</h3>
-                        <select class="form-control form-control-lg">
+                        <select class="form-control form-control-lg" id="p_prize">
                             <?php while ($row = mysqli_fetch_array($rprize)) :; ?>
-                                <option value="<?php echo $row[0]; ?>"><?php echo $row[1]; ?></option>
+                                <option value="<?php echo $row[1]; ?>"><?php echo $row[1]; ?></option>
                             <?php endwhile; ?>
                         </select>
                     </form>
@@ -118,27 +133,23 @@ require('config.php');
                 <div class="card-footers">
                     <button type="button" class="btn btn-block btn-success" id="btnBerhenti" disabled>Berhenti</button>
                 </div>
-
-                <div id="hasil-udian">
-
-                </div>
             </div>
 
             <div class="modal" tabindex="-1" role="dialog" id="modalPrize">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modalCenter" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                        <div class="modal-header text-center">
+                            <h5 class="modal-title w-100">SELAMAT UNTUK</h5>
                         </div>
-                        <div class="modal-body">
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <div class="modal-body text-center">
+                            <form method="post" id="formWin" class="form-inline justify-content-center">
+                                <div id="hasil-undian">
+                                </div>
+                                <div>
+                                <h3 class="h3Center"><input type="text" name="hadiah" id="hadiah" value="" style="border:none;text-align:center" readonly/></h3>
+                                </div>
+                            <input type="submit" name="simpan" id="simpan" value="Lanjutkan Undian" class="btn btn-block btn-success"/>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -301,7 +312,7 @@ require('config.php');
                 $("#lblAngka4").text(angkaAcak4());
 
                 jalan = true;
-                setTimeout('ubahAngkaAcak()', 50);
+                setTimeout('ubahAngkaAcak()', 5);
                 jalan1 = true;
                 setTimeout('ubahAngkaAcak1()', 50);
                 jalan2 = true;
@@ -408,15 +419,31 @@ require('config.php');
                 let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html() + $('#lblAngka4').html();
                 console.log(hasil);
                 $('#modalPrize').modal("show");
+                var id_undian = $(this).attr("id");
+
+                $("#formWin").submit(function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        url: 'saveWin.php',
+                        type: 'post',
+                        data: $(this).serialize(),
+                        success: function(data){
+                            window.location.reload();
+                        }
+                    });
+                })
                 $.ajax({
                     type: "get",
                     url: urlGetDataUndian + '?id=' + hasil,
+                    data: {
+                        id_undian: id_undian 
+                    },
                     dataType: "json",
                     success: function(response) {
-                        $('#hasil-udian').append(`
-                        <h3> ${response.nama_toko} </h3>
-                            <button type="button" class="btn btn-lg btn-warning mt-10" onclick='window.location.reload(true);' >Reset</button>
-                        `);
+                        $('#hasil-undian').append(`
+                           <h3 class="h3Center"><input type="text" name="nama_toko" id="nama_toko" value="${response.nama_toko}" style="border:none;text-align:center" readonly/></h3>
+_                        `);
+                        $("#p_prize option:selected").val()
                     }
                 });
 
