@@ -26,10 +26,10 @@ require('config.php');
         .h3Center {
             text-align: center;
         }
-        input{
+
+        input {
             text-align: center;
         }
-
     </style>
 </head>
 <!-- background-repeat: no-repeat; height:auto; background-size: cover; -->
@@ -146,9 +146,9 @@ require('config.php');
                                 <div id="hasil-undian">
                                 </div>
                                 <div>
-                                
+
                                 </div>
-                            <input type="submit" name="simpan" id="simpan" value="Lanjutkan Undian" class="btn btn-block btn-success"/>
+                                <input type="submit" name="simpan" id="simpan" value="Lanjutkan Undian" class="btn btn-block btn-success mt-2" />
                             </form>
                         </div>
                     </div>
@@ -160,53 +160,39 @@ require('config.php');
     <div class="container">
         <div class="row">
             <div class="col-sm">
+                <?php
+
+                $qHslPrize = "SELECT * FROM tb_win WHERE hadiah = 'Sepeda Motor';";
+                $listWin = mysqli_query($koneksi, $qHslPrize);
+
+                ?>
                 <div class="card">
                     <div class="card-header">
-                        <h5>Pemenang 1</h5>
+                        <h5 class="h3Center">Pemenang Motor</h5>
                     </div>
-                    <div class="card-body">
-                        <h5>Nama Toko</h5>
-                    </div>
+                    <?php while ($row = mysqli_fetch_array($listWin)) :; ?>
+                        <div class="card-body">
+                            <h5 class="h3Center"><?php echo $row['nama_toko']; ?></h5>
+                        </div>
+                    <?php endwhile; ?>
                 </div>
             </div>
             <div class="col-sm">
+                <?php
+
+                $qHslPrizemob = "SELECT * FROM tb_win WHERE hadiah = 'Mobil';";
+                $listWinMob = mysqli_query($koneksi, $qHslPrizemob);
+
+                ?>
                 <div class="card">
                     <div class="card-header">
-                        <h5>Pemenang 1</h5>
+                        <h5 class="h3Center">Pemenang Mobil</h5>
                     </div>
-                    <div class="card-body">
-                        <h5>Nama Toko</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Pemenang 1</h5>
-                    </div>
-                    <div class="card-body">
-                        <h5>Nama Toko</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Pemenang 1</h5>
-                    </div>
-                    <div class="card-body">
-                        <h5>Nama Toko</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Pemenang 1</h5>
-                    </div>
-                    <div class="card-body">
-                        <h5>Nama Toko</h5>
-                    </div>
+                    <?php while ($row = mysqli_fetch_array($listWinMob)) :; ?>
+                        <div class="card-body">
+                            <h5 class="h3Center"><?php echo $row['nama_toko']; ?></h5>
+                        </div>
+                    <?php endwhile; ?>
                 </div>
             </div>
 
@@ -372,7 +358,9 @@ require('config.php');
                     jalan2 = false;
                     jalan3 = false;
                     jalan4 = false;
-                    $('#modalPrize').modal({backdrop:"static"});
+                    $('#modalPrize').modal({
+                        backdrop: "static"
+                    });
 
             }
             count--;
@@ -424,35 +412,35 @@ require('config.php');
                 var id_undian = $(this).attr("id");
                 var selected = $('select').find('option:selected').text();
 
-                $('select').change(function()
-                  {
-                      var selected = $(this).find('option:selected').text();
-                      alert(selected);
-                  });
-                  
-                
-                $("#formWin").submit(function(e){
+                $('select').change(function() {
+                    var selected = $(this).find('option:selected').text();
+                    alert(selected);
+                });
+
+
+                $("#formWin").submit(function(e) {
                     e.preventDefault();
                     $.ajax({
                         url: 'saveWin.php',
                         type: 'post',
                         data: $(this).serialize(),
-                        success: function(data){
+                        success: function(data) {
                             window.location.reload();
                         }
                     });
-                })  
+                })
 
                 $.ajax({
                     type: "get",
                     url: urlGetDataUndian + '?id=' + hasil,
                     data: {
-                        id_undian: id_undian 
+                        id_undian: id_undian
                     },
                     dataType: "json",
                     success: function(response) {
                         $('#hasil-undian').append(`
                            <h3 class="h3Center"><input type="text" name="nama_toko" id="nama_toko" value="${response.nama_toko}" style="border:none;text-align:center" readonly/></h3>
+                           <h3 class="h3Center mt-1">HADIAH YANG DI DAPAT</h3>
                            <h3 class="h3Center"><input type="text" name="hadiah" id="hadiah" value="${selected}" style="border:none;text-align:center" readonly/></h3>
                            `);
                     }
