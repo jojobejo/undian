@@ -146,7 +146,7 @@ require('config.php');
                                 <div id="hasil-undian">
                                 </div>
                                 <div>
-                                <h3 class="h3Center"><input type="text" name="hadiah" id="hadiah" value="" style="border:none;text-align:center" readonly/></h3>
+                                
                                 </div>
                             <input type="submit" name="simpan" id="simpan" value="Lanjutkan Undian" class="btn btn-block btn-success"/>
                             </form>
@@ -311,6 +311,7 @@ require('config.php');
                 $("#lblAngka3").text(angkaAcak3());
                 $("#lblAngka4").text(angkaAcak4());
 
+
                 jalan = true;
                 setTimeout('ubahAngkaAcak()', 5);
                 jalan1 = true;
@@ -371,6 +372,7 @@ require('config.php');
                     jalan2 = false;
                     jalan3 = false;
                     jalan4 = false;
+                    $('#modalPrize').modal({backdrop:"static"});
 
             }
             count--;
@@ -420,7 +422,15 @@ require('config.php');
                 console.log(hasil);
                 $('#modalPrize').modal("show");
                 var id_undian = $(this).attr("id");
+                var selected = $('select').find('option:selected').text();
 
+                $('select').change(function()
+                  {
+                      var selected = $(this).find('option:selected').text();
+                      alert(selected);
+                  });
+                  
+                
                 $("#formWin").submit(function(e){
                     e.preventDefault();
                     $.ajax({
@@ -431,7 +441,8 @@ require('config.php');
                             window.location.reload();
                         }
                     });
-                })
+                })  
+
                 $.ajax({
                     type: "get",
                     url: urlGetDataUndian + '?id=' + hasil,
@@ -442,8 +453,8 @@ require('config.php');
                     success: function(response) {
                         $('#hasil-undian').append(`
                            <h3 class="h3Center"><input type="text" name="nama_toko" id="nama_toko" value="${response.nama_toko}" style="border:none;text-align:center" readonly/></h3>
-_                        `);
-                        $("#p_prize option:selected").val()
+                           <h3 class="h3Center"><input type="text" name="hadiah" id="hadiah" value="${selected}" style="border:none;text-align:center" readonly/></h3>
+                           `);
                     }
                 });
 
