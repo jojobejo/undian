@@ -249,7 +249,7 @@ require('config.php');
         var awal = 0;
         var akhir = 9;
         var jalan = false;
-        var urlGetDataUndian = "http://localhost/undian/get-detail-undian.php";
+        var urlGetDataUndian = "http://192.168.10.94/undian/get-detail-undian.php";
 
         let count = 0;
 
