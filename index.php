@@ -16,6 +16,10 @@ require('config.php');
     <link href="css/bootstrap-grid.css" rel="stylesheet">
     <link href="css/bootstrap-reboot.css" rel="stylesheet">
     <link href="css/bootstrap-themes.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 
     <style>
         .modalCenter {
@@ -42,7 +46,7 @@ require('config.php');
             </div>
             <div class="card">
                 <div class="card-header">
-                    <h2>UNDIAN SILVER</h2>
+                    <h2>UNDIAN PLATINUM</h2>
                 </div>
                 <div class="card-body ">
                     <form id="frmAngka" method="post" action="index.html">
@@ -115,7 +119,31 @@ require('config.php');
                         </select>
                     </form>
 
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        Launch demo modal
+                    </button>
 
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="0" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="card-footer">
@@ -200,13 +228,8 @@ require('config.php');
     </div>
 
 
-    <!-- SCRIPT UNDIAN -->
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Bootstrap Validator -->
-    <script src="js/validator.min.js"></script>
+
+
     <script type="text/javascript">
         var awal1 = 0;
         var akhir1 = 9;
@@ -408,6 +431,7 @@ require('config.php');
                 $("#txtAwal").prop('disabled', false);
                 let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html() + $('#lblAngka4').html();
                 console.log(hasil);
+
                 $('#modalPrize').modal("show");
                 var id_undian = $(this).attr("id");
                 var selected = $('select').find('option:selected').text();
