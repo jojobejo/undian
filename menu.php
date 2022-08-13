@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Undian</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-grid.css" rel="stylesheet">
-    <link href="css/bootstrap-reboot.css" rel="stylesheet">
-    <link href="css/bootstrap-themes.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-grid.css" rel="stylesheet">
+    <link href="../css/bootstrap-reboot.css" rel="stylesheet">
+    <link href="../css/bootstrap-themes.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DynaPuff">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -53,10 +54,34 @@
         left: 575px;
     }
 
-    h3 {
-        color: white;
+    .menuSilver {
+        position: absolute;
+        top: 400px;
+        left: 250px;
        
     }
+    .menuGold {
+        position: absolute;
+        top: 400px;
+        left: 550px;
+       
+    }
+    .menuPlatinum {
+        position: absolute;
+        top: 400px;
+        left: 850px;
+       
+    }
+    h1{
+        font-family: "DynaPuff", sans-serif;
+        color: gold;
+        position: absolute;
+        font-weight: bold;
+        font-size: 60px;
+        top: 300px;
+        left: 370px;
+    }
+
 </style>
 
 <body>
@@ -66,7 +91,10 @@
         <div class="logo3"></div>
     </div>
     <div>
-        <h3> PILIH UNDIAN </h3>
+        <h1> Pilih Katagori Undian </h1>
+        <a href="silver/pilih_hadiah.php" class="menuSilver"><img src="images/Kupon S.png"></a>
+        <a href="#menuSilver" class="menuGold"><img src="images/Kupon.png"></a>
+        <a href="#menuSilver" class="menuPlatinum"><img src="images/Kupon P.png"></a>
     </div>
 </body>
 </html>
