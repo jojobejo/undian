@@ -1,175 +1,14 @@
-<?php
-require('../config.php');
-?>
-
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Rahmad Dawood">
-    <meta name="description" content="Bangkitkan bilangan acak antara range tertentu.">
-    <title>Undian</title>
-
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/bootstrap-grid.css" rel="stylesheet">
-    <link href="../css/bootstrap-reboot.css" rel="stylesheet">
-    <link href="../css/bootstrap-themes.css" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-    <style>
-        body {
-            background-image: url("../images/bg.png");
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .modalCenter {
-            top: 35% !important;
-            transform: translateY(-50%) !important;
-        }
-
-        .silver {
-            font-family: 'Lobstertwo', sans-serif;
-            font-size: 60px;
-        }
-
-        .h3Center {
-            text-align: center;
-        }
-
-        .h2Center {
-            text-align: center;
-            font-weight: bold;
-            font-size: 35px;
-        }
-
-        .h3hadiah {
-            text-align: center;
-            position: relative;
-            height: 10px;
-        }
-
-
-        .h3noUndian {
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .h3tko {
-            text-align: center;
-            position: relative;
-            width: 200px;
-            height: 5px;
-        }
-
-        input {
-            text-align: center;
-        }
-
-        .logo1 {
-            position: absolute;
-            left: 700px;
-        }
-
-        .logo2 {
-            position: absolute;
-            left: 300px;
-            top: -30px;
-        }
-
-        .logo3 {
-            position: absolute;
-            left: 800px;
-            top: 250px;
-        }
-
-        .posCard1 {
-            position: absolute;
-            top: 680px;
-            left: 350px;
-            width: 1200px;
-            height: 320px;
-            border-radius: 20px;
-            border: black;
-            border-style: solid;
-        }
-
-        .posnoundi {
-            position: absolute;
-            top: 390px;
-            left: 250px;
-            width: 1400px;
-            height: 190px;
-            border-radius: 50px;
-            border-style: solid;
-            border: black;
-        }
-
-        .poswin1 {
-            position: absolute;
-            top: 150px;
-            left: -10px;
-        }
-
-        .poswin2 {
-            position: absolute;
-            top: 100px;
-            left: 430px;
-        }
-
-        .bg-primary {
-            background-color: #007bff !important;
-        }
-
-        .bg-custom-1 {
-            background-color: rgba(0, 0, 0, 0.2);
-        }
-
-        .lblhide {
-            position: absolute;
-            top: 10px;
-        }
-
-        .card-pilih {
-            background-image: linear-gradient(#DCBB60, #FFE880, #B59451, #966D2F);
-        }
-
-        .card-undi {
-            background-image: linear-gradient(#FFE880, #B59451, #966D2F);
-        }
-
-        .h3FontCus {
-            font-family: "DynaPuff", sans-serif;
-            /* text-decoration: underline; */
-            font-weight: bold;
-            font-size: 120px;
-        }
-    </style>
-</head>
-<!-- background-repeat: no-repeat; height:auto; background-size: cover; -->
-
 <body>
     <div class="container">
         <center>
             <div class="page-header" style="margin-top:-10px;">
-                <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
-                <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
-                <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px">
+                <img src="../images/karisma.png" alt="" class="logo1" height="150px" width="300px">
+                <img src="../images/extra.png" alt="" class="logo2" height="150px" width="250px">
+                <img src="../images/2022.png" alt="" class="logo3" height="75px" width="125px">
             </div>
-            <div class="card posCard1 card-pilih ">
+            <div class="card posCard1 ">
                 <div class="card-header ">
                     <h2 class="silver">UNDIAN SILVER</h2>
-                    <p id="result_prize" hidden></p>
                 </div>
                 <div class="card-body ">
                     <form id="frmAngka" method="post" action="index.html">
@@ -249,18 +88,21 @@ require('../config.php');
                             </div>
                         </div>
                     </form>
+
+                    <p id="result_prize" hidden></p>
+
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-block btn-success" id="btnAcak" onclick="mulai()">Mulai Undian</button>
                 </div>
             </div>
-            <div class="card mt-5 mb-5 posnoundi card-undi">
+            <div class="card mt-5 mb-5 posnoundi">
                 <div class="d-flex flex-row justify-content-center">
-                    <h3 class="col-md-2 h3FontCus" id="lblAngka"> x </h3>
-                    <h3 class="col-md-2 h3FontCus" id="lblAngka1"> x </h3>
-                    <h3 class="col-md-2 h3FontCus" id="lblAngka2"> x </h3>
-                    <h3 class="col-md-2 h3FontCus" id="lblAngka3"> x </h3>
-                    <h3 class="col-md-2 h3FontCus" id="lblAngka4"> x </h3>
+                    <h3 class="col-md-1" id="lblAngka"> 0 </h3>
+                    <h3 class="col-md-1" id="lblAngka1"> 1 </h3>
+                    <h3 class="col-md-1" id="lblAngka2"> 2 </h3>
+                    <h3 class="col-md-1" id="lblAngka3"> 3 </h3>
+                    <h3 class="col-md-1" id="lblAngka4"> 4 </h3>
                 </div>
                 <div class="card-footers">
                     <button type="button" class="btn btn-block btn-success mt-2 mb-2 mr-2" id="btnBerhenti" disabled hidden>Berhenti</button>
@@ -286,6 +128,8 @@ require('../config.php');
 
         </center>
     </div>
+
+
 
     <!-- SCRIPT UNDIAN -->
     <!-- jQuery -->
@@ -433,6 +277,7 @@ require('../config.php');
 
 
 
+
         window.onkeydown = function(event) {
             if (event.keyCode === 13) {
                 event.preventDefault();
@@ -471,12 +316,15 @@ require('../config.php');
                 $("#txtAkhir").prop('disabled', false);
                 $("#txtAwal").prop('disabled', false);
                 $("#btnBerhenti").prop('disabled', false);
+
+
             }
         }
 
         function radioGet(getValue) {
             document.getElementById('result_prize').innerHTML = getValue;
         }
+
 
         function tmplPemenang() {
             let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html() + $('#lblAngka4').html();
@@ -488,6 +336,11 @@ require('../config.php');
             $('#modalPrize').modal("show");
             var id_undian = $(this).attr("id");
             var selected = $('select').find('option:selected').text();
+
+            $('#myForm input').change(function() {
+                var setValue = $("[type='radio']:checked").val();
+                $('#setValue').val($("[type='radio']:checked").val());
+            });
 
             $('#r_hadiah').change(function() {
                 var selected = $(this).find('option:selected').text();
@@ -513,12 +366,10 @@ require('../config.php');
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
-                        window.location.reload();
+                       
                     }
                 });
             })
-
-
 
             $.ajax({
                 type: "get",

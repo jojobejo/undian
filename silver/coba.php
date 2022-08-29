@@ -11,140 +11,39 @@
     <link href="../css/bootstrap-grid.css" rel="stylesheet">
     <link href="../css/bootstrap-reboot.css" rel="stylesheet">
     <link href="../css/bootstrap-themes.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-
-    <style>
-        :root {
-            --lightgray: #efefef;
-            --blue: steelblue;
-            --white: #fff;
-            --black: rgba(0, 0, 0, 0.8);
-            --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
-        }
-
-        * {
-            padding: 0;
-            margin: 0;
-        }
-
-        button {
-            cursor: pointer;
-            background: transparent;
-            border: none;
-            outline: none;
-            font-size: inherit;
-        }
-
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            font: 16px/1.5 sans-serif;
-        }
-
-        .btn-group {
-            text-align: center;
-        }
-
-        .open-modal {
-            font-weight: bold;
-            background: var(--blue);
-            color: var(--white);
-            padding: .75rem 1.75rem;
-            margin-bottom: 1rem;
-            border-radius: 5px;
-        }
-
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            background: var(--black);
-            cursor: pointer;
-            visibility: hidden;
-            opacity: 0;
-            transition: all 0.35s ease-in;
-
-        }
-
-        .modal-dialog {
-            position: relative;
-            max-width: 800px;
-            max-height: 80vh;
-            border-radius: 5px;
-            background: var(--white);
-            overflow: auto;
-            cursor: default;
-        }
-
-
-        .modal-dialog>* {
-            padding: 1rem;
-        }
-
-        .modal-header,
-        .modal-footer {
-            background: var(--lightgray);
-        }
-
-        .modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .modal-header .modal-close {
-            font-size: 1.5rem;
-        }
-
-        .modal p+p {
-            margin-top: 1rem;
-        }
-    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
 </head>
 
 <body>
 
-    <button type="button" class="open-modal" data-open="modal1">...</button>
+    <form id="cobaForm">
+        <input type="radio" name="radioBtn" id="rd1" value="aa">a</br>
+        <input type="radio" name="radioBtn" id="rd2" value="bb">b</br>
+        <input type="radio" name="radioBtn" id="rd3" value="cc">c</br>
 
-    <div class="modal" id="modal1">
-        <div class="modal-dialog">
-            <header class="modal-header">
-                ...
-                <button class="close-modal" aria-label="close modal" data-close>✕</button>
-            </header>
-            <section class="modal-content">...</section>
-            <footer class="modal-footer">...</footer>
-        </div>
-    </div>
+        <button onclick="fn1();" id="btn1">coba</button>
+        <input type="text" id="selvalue" name="selvalue">
+    </form>
 
 </body>
 <script>
-    const openEls = document.querySelectorAll("[data-open]");
-    const isVisible = "is-visible";
-
-    for (const el of openEls) {
-        el.addEventListener("click", function() {
-            const modalId = this.dataset.open;
-            document.getElementById(modalId).classList.add(isVisible);
-        });
+    function fn1() {
+        var rd1 = document.getElementById("rd1");
+        var rd2 = document.getElementById("rd2");
+        var rd3 = document.getElementById("rd3");
+        if (rd1.checked == true)
+            alert("radio value was :" + rd1.value);
+        else if (rd2.checked == true)
+            alert("radio value was :" + rd2.value);
+        else if (rd3.checked == true)
+            alert("radio value was :" + rd3.value);
+            else
+            alert("radio not selected");
     }
-
-    const isVisible = "is-visible";
-
-    document.addEventListener("keyup", e => {
-        if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
-            document.querySelector(".modal.is-visible").classList.remove(isVisible);
-        }
-    });
 </script>
 
 </html>
+
+
+
