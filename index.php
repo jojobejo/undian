@@ -93,7 +93,7 @@
     <div>
         <h1> Pilih Katagori Undian </h1>
         <a href="silver/index.php" class="menuSilver"><img src="images/Kupon S.png"></a>
-        <a href="#gold" class="menuGold"><img src="images/Kupon.png"></a>
+        <a href="gold/index.php" class="menuGold"><img src="images/Kupon.png"></a>
         <a href="platinum/index.php" class="menuPlatinum"><img src="images/Kupon P.png"></a>
     </div>
 </body>
