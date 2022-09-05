@@ -3,7 +3,7 @@
     $host = 'localhost';
     $user = 'root';
     $pass = '';
-    $db   = 'undian';
+    $db   = 'extravaganza_undian';
     
     $koneksi = mysqli_connect($host,$user,$pass,$db);
     if(!$koneksi){

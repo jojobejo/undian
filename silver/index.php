@@ -17,12 +17,13 @@ require('../config.php');
     <link href="../css/bootstrap-grid.css" rel="stylesheet">
     <link href="../css/bootstrap-reboot.css" rel="stylesheet">
     <link href="../css/bootstrap-themes.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
@@ -95,10 +96,10 @@ require('../config.php');
 
         .posCard1 {
             position: absolute;
-            top: 680px;
+            top: 420px;
             left: 350px;
             width: 1200px;
-            height: 320px;
+            height: 500px;
             border-radius: 20px;
             border: black;
             border-style: solid;
@@ -154,6 +155,42 @@ require('../config.php');
             font-weight: bold;
             font-size: 120px;
         }
+
+        .sizes {
+            height: 150px;
+            width: auto;
+        }
+
+        .img-thumbnail {
+            background-color: transparent;
+            border: none;
+            height: 200px;
+            width: auto;
+        }
+
+        .pemenang {
+            position: absolute;
+            left: 100px;
+            top: 10px;
+        }
+
+        .home {
+            position: absolute;
+            left: 90px;
+            top: 10px;
+        }
+
+        .btn-warning,
+        .btn-warning:hover,
+        .btn-warning:active,
+        .btn-warning:visited {
+            background-color: linear-gradient(#FFE880, #B59451, #966D2F) !important;
+        }
+
+        .gbr-custom {
+            height: 150px;
+            width: 150px;
+        }
     </style>
 </head>
 <!-- background-repeat: no-repeat; height:auto; background-size: cover; -->
@@ -161,6 +198,12 @@ require('../config.php');
 <body>
     <div class="container">
         <center>
+            <div class="pemenang" hidden>
+                <a href="#" class=" btn btn-warning btn-lg" id="btnTampil" role="button"><i class="fa fa-trophy"></i> Tampilkan Pemenang</a>
+            </div>
+            <div class="home" hidden>
+                <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i> Menu</a>
+            </div>
             <div class="page-header" style="margin-top:-10px;">
                 <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
                 <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
@@ -168,122 +211,42 @@ require('../config.php');
             </div>
             <div class="card posCard1 card-pilih ">
                 <div class="card-header ">
-                    <h2 class="silver">UNDIAN SILVER</h2>
-                    <p id="result_prize" hidden></p>
+                    <h3>PILIH HADIAH UNDIAN</h3>
                 </div>
+
                 <div class="card-body ">
-                    <form id="frmAngka" method="post" action="index.html">
-                        <div class="form-group lblhide">
-                            <label for="txtAwal" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal" placeholder="Angka awal" min="1" value="0">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="1" value="1">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAwal1" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal1" placeholder="Angka awal1" min="1" value="0">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir1" placeholder="Angka akhir1" min="1" value="9">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAwal1" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal2" placeholder="Angka awal2" min="1" value="0">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir2" placeholder="Angka akhir2" min="1" value="9">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAwal1" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal3" placeholder="Angka awal3" min="1" value="0">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir3" placeholder="Angka akhir3" min="1" value="9">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAwal1" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal4" placeholder="Angka awal2" min="1" value="0">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir4" placeholder="Angka akhir2" min="1" value="9">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAwal1" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal5" placeholder="Angka awal2" min="1" value="0">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir5" placeholder="Angka akhir2" min="1" value="9">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAwal1" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal6" placeholder="Angka awal2" min="1" value="0">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir6" placeholder="Angka akhir2" min="1" value="9">
-                        </div>
+                    <?php
+                    $qprize = " SELECT tb_prize.*,tb_undian.*
+                        FROM tb_prize
+                        JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.id_kat_undi
+                        WHERE tb_undian.kat_undian = 'silver' ";
+                    $rprize = mysqli_query($koneksi, $qprize);
+                    ?>
 
-                        <?php
-                        $qprize = " SELECT tb_prize.*,tb_undian.*
-                                    FROM tb_prize JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.kat_undian 
-                                    WHERE tb_undian.kat_undian = 'silver' ";
-                        $rprize = mysqli_query($koneksi, $qprize);
-                        ?>
-
-                        <div class="container-x">
-                            <div class="row">
-                                <?php while ($row = mysqli_fetch_array($rprize)) :; ?>
-                                    <div class='col md-4'>
-                                        <input type="radio" name="t_prize" value="<?php echo $row['nama_prize'] ?>" onchange="radioGet($(this).val())">
-                                        <label for="rd_hadiah"><?php echo $row['nama_prize']; ?></label>
-                                        <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail">
-                                    </div>
-                                <?php endwhile; ?>
+                    <?php
+                    $qprizesilver = " SELECT tb_prize.*,tb_undian.*
+                        FROM tb_prize
+                        JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.id_kat_undi
+                        WHERE tb_undian.kat_undian = 'silver_2' ";
+                    $rprize1 = mysqli_query($koneksi, $qprizesilver);
+                    ?>
+                    <div class="row">
+                        <?php while ($row = mysqli_fetch_array($rprize)) :; ?>
+                            <div class="col-md-2 ml-5">
+                                <a href="../silver/undian_silver.php?id=<?php echo $row['id_prize']?>"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail sizes"></a>
                             </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-block btn-success" id="btnAcak" onclick="mulai()">Mulai Undian</button>
-                </div>
-            </div>
-            <div class="card mt-5 mb-5 posnoundi card-undi">
-                <div class="d-flex flex-row justify-content-center">
-                    <h3 class="col-md-2 h3FontCus" id="lblAngka"> x </h3>
-                    <h3 class="col-md-2 h3FontCus" id="lblAngka1"> x </h3>
-                    <h3 class="col-md-2 h3FontCus" id="lblAngka2"> x </h3>
-                    <h3 class="col-md-2 h3FontCus" id="lblAngka3"> x </h3>
-                    <h3 class="col-md-2 h3FontCus" id="lblAngka4"> x </h3>
-                </div>
-                <div class="card-footers">
-                    <button type="button" class="btn btn-block btn-success mt-2 mb-2 mr-2" id="btnBerhenti" disabled hidden>Berhenti</button>
-                </div>
-            </div>
-
-            <div class="modal" tabindex="-1" role="dialog" id="modalPrize">
-                <div class="modal-dialog modalCenter " role="document">
-                    <div class="modal-content">
-                        <div class="modal-header text-center">
-                            <h1 class="modal-title w-100">SELAMAT UNTUK</h1>
-                        </div>
-                        <div class="modal-body text-center">
-                            <form method="post" id="formWin" class="form-inline justify-content-center">
-                                <div id="hasil-undian">
-                                </div>
-                                <button type="submit" name="simpan" id="btnSimpan" class="btn btn-block btn-success mt-2">Lanjutkan Undian</button>
-                            </form>
-                        </div>
+                        <?php endwhile; ?>
+                        <?php while ($row = mysqli_fetch_array($rprize1)) :; ?>
+                            <div class="col-md-2 ml-5 mt-3">
+                                <a href="#"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail sizes"></a>
+                            </div>
+                        <?php endwhile; ?>
                     </div>
                 </div>
-            </div>
+                <div class="card-footer">
 
+                </div>
+            </div>
         </center>
     </div>
 
@@ -322,8 +285,57 @@ require('../config.php');
         var awal = 0;
         var akhir = 9;
         var jalan = false;
-        var urlGetDataUndian = "http://localhost/undian/get-detail-undian.php";
+        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian.php";
 
+        $('#btnHome').click(function() {
+            location.href = "../index.php"
+        })
+
+        $('#btnTampil').click(function() {
+            location.href = "../silver/tampil_hadiah.php"
+        })
+        $('#btnSimpan').click(function() {
+            $("#formWin").submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '../saveWinSilver.php',
+                    type: 'post',
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        location.reload();
+                    }
+                });
+            })
+        })
+
+        window.onkeydown = function(event) {
+            // Kode
+            // 13  = enter
+            // 220 = \
+            // 8   = backspace
+            // 16  = shift
+
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.querySelector('#btnBerhenti').click();
+            }
+            if (event.keyCode === 36) {
+                event.preventDefault();
+                document.querySelector('#btnHome').click();
+            }
+            if (event.keyCode === 222) {
+                event.preventDefault();
+                document.querySelector('#btnTampil').click();
+            }
+            if (event.keyCode === 16) {
+                event.preventDefault();
+                document.querySelector('#btnSimpan').click();
+            }
+            if (event.keyCode === 32) {
+                event.preventDefault();
+                document.querySelector('#btnAcak').click();
+            }
+        }
         let count = 0;
 
         $('#btnAcak').click(function() {
@@ -394,15 +406,22 @@ require('../config.php');
 
         $('#btnBerhenti').click(function() {
 
-            jalan = false;
-            jalan1 = false;
-            jalan2 = false;
-            jalan3 = false;
-            jalan4 = false;
+            var getundi = setInterval(function() {
 
-            setTimeout('tmplPemenang()', 2000);
+                let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html() + $('#lblAngka4').html();
 
-            return false;
+                if (hasil > 46109) {
+                    jalan = true;
+                    jalan1 = true;
+                    jalan2 = true;
+                } else {
+                    jalan = false;
+                    jalan1 = false;
+                    jalan2 = false;
+                }
+            }, 100)
+
+            setTimeout('tmplPemenang()', 1500);
         });
 
         $('#btnReset').click(function() {
@@ -429,16 +448,6 @@ require('../config.php');
 
         function angkaAcak4() {
             return Math.floor(Math.random() * (akhir4 - awal4 + 1) + awal4);
-        }
-
-
-
-        window.onkeydown = function(event) {
-            if (event.keyCode === 13) {
-                event.preventDefault();
-                document.querySelector('#btnBerhenti').click();
-            }
-
         }
 
         function ubahAngkaAcak() {
@@ -494,29 +503,9 @@ require('../config.php');
                 alert(selected);
             });
 
-            window.onkeydown = function(event) {
-                if (event.keyCode === 13) {
-                    event.preventDefault();
-                    document.querySelector('#btnBerhenti').click();
-                }
 
-                if (event.keyCode === 32) {
-                    event.preventDefault();
-                    document.querySelector('#simpan')
-                }
-            }
 
-            $("#formWin").submit(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: '../saveWinSilver.php',
-                    type: 'post',
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        window.location.reload();
-                    }
-                });
-            })
+
 
 
 
@@ -532,7 +521,9 @@ require('../config.php');
                             <h3 class="h3noUndian">No Undian : ${hasil}</h3>
                             <h3 class="h2Center"><input type="text" name="nama_toko" id="nama_toko" value="${response.nama_toko}" style="border:none;text-align:center" readonly/></h3>
                             <h3 class="h3hadiah">HADIAH YANG DI DAPAT</h3>
+                            </br>
                             <h3 class="h2Center"><input type="text" name="hadiah" id="hadiah" value="${hadiah}" style="border:none;text-align:center" readonly/></h3>
+                            <input type="text" name="noundi" id="noundi" value="${response.nomor_undi}" style="border:none;text-align:center" hidden/>
                            `);
                 }
             });

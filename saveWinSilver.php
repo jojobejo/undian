@@ -1,10 +1,11 @@
 <?php
 include 'config.php';
 
+$no_undian  = $_POST['noundi'];
 $nama_toko  = $_POST['nama_toko'];
 $hadiah     = $_POST['hadiah'];
 
-$sql = mysqli_query($koneksi, "INSERT INTO tb_win(nama_toko,kat_undian,hadiah) VALUES('".$nama_toko."',1,'".$hadiah."')");
+$sql = mysqli_query($koneksi, "INSERT INTO tb_win(nomor_undian,nama_toko,kat_undian,hadiah) VALUES('".$no_undian."','".$nama_toko."',1,'".$hadiah."')");
 if($sql){
     echo "<div style='color:green'> DATA BERHASIL DISIMPAN </div>";
 }else{
