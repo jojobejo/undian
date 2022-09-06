@@ -11,7 +11,7 @@ require('../config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Rahmad Dawood">
     <meta name="description" content="Bangkitkan bilangan acak antara range tertentu.">
-    <title>Undian Gold</title>
+    <title>Undian Platinum</title>
 
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/bootstrap-grid.css" rel="stylesheet">
@@ -22,9 +22,9 @@ require('../config.php');
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <style>
         body {
@@ -106,7 +106,7 @@ require('../config.php');
 
         .posnoundi {
             position: absolute;
-            top: 390px;
+            top: 670px;
             left: 250px;
             width: 1400px;
             height: 190px;
@@ -183,6 +183,13 @@ require('../config.php');
         .btn-warning:visited {
             background-color: linear-gradient(#FFE880, #B59451, #966D2F) !important;
         }
+
+        .mobil-img {
+            position: absolute;
+            left: 25px;
+            top: 250px;
+
+        }
     </style>
 </head>
 <!-- background-repeat: no-repeat; height:auto; background-size: cover; -->
@@ -201,12 +208,11 @@ require('../config.php');
                 <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
                 <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px">
             </div>
-            <div class="card posCard1 card-pilih ">
-                <div class="card-header ">
+            <div class="card posCard1 card-pilih" hidden>
+                <div class="card-header" hidden>
                     <h2 class="silver">UNDIAN PLATINUM</h2>
-                    <p id="result_prize" hidden></p>
                 </div>
-                <div class="card-body ">
+                <div class="card-body" hidden>
                     <form id="frmAngka" method="post" action="index.html">
                         <div class="form-group lblhide">
                             <label for="txtAwal" hidden>Angka awal</label>
@@ -233,35 +239,37 @@ require('../config.php');
                             <input type="hidden" class="form-control" id="txtAkhir2" placeholder="Angka akhir2" min="1" value="9">
                         </div>
 
-                        <?php
-                        $qprize = " SELECT tb_prize.*,tb_undian.*
-                        FROM tb_prize
-                        JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.id_kat_undi
-                        WHERE tb_undian.kat_undian = 'platinum'";
-                        $rprize = mysqli_query($koneksi, $qprize);
-                        ?>
-
-                        <div class="container-x">
-                            <div class="row">
-                                <?php while ($row = mysqli_fetch_array($rprize)) :; ?>
-                                    <div class='col md-4'>
-                                        <input type="radio" name="t_prize" value="<?php echo $row['nama_prize'] ?>" onchange="radioGet($(this).val())">
-                                        <label for="rd_hadiah"><?php echo $row['nama_prize']; ?></label>
-                                        <div class='row'>
-                                            <div class="col md-1">
-                                                <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail sizes">
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endwhile; ?>
-                            </div>
-                        </div>
                     </form>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer" hidden>
                     <button type="submit" class="btn btn-block btn-success" id="btnAcak" onclick="mulai()">Mulai Undian</button>
                 </div>
             </div>
+
+
+            <?php
+            $qprize = " SELECT tb_prize.*,tb_undian.*
+                        FROM tb_prize
+                        JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.id_kat_undi
+                        WHERE tb_undian.kat_undian = 'platinum'";
+            $rprize = mysqli_query($koneksi, $qprize);
+            ?>
+
+            <div class="container-x">
+                <div class="row">
+                    <?php while ($row = mysqli_fetch_array($rprize)) :; ?>
+                        <div class='col md-4'>
+                            <div class='row'>
+                                <div class="col md-1">
+                                    <img src="../images/hadiah/<?php echo $row['img'] ?>" class="mobil-img" style="height: 550px; width: 1000px;">
+                                    <p id="result_prize" hidden><?php echo $row['nama_prize'] ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endwhile; ?>
+                </div>
+            </div>
+
             <div class="card mt-5 mb-5 posnoundi card-undi">
                 <div class="d-flex flex-row justify-content-center">
                     <h3 class="col-md-2 h3FontCus" id="lblAngka"> x </h3>
@@ -428,7 +436,7 @@ require('../config.php');
                     break;
                 case 2:
                     jalan = true;
-                    if (hasil1 > 8) {
+                    if (hasil1 > 9) {
                         jalan1 = true;
                     } else {
                         jalan1 = false;
@@ -441,7 +449,7 @@ require('../config.php');
                     jalan = false;
                     jalan1 = false;
                     jalan2 = false;
-                   setTimeout('tmplPemenang()', 1500);
+                    setTimeout('tmplPemenang()', 1500);
                     break;
             }
             return false;
@@ -543,11 +551,6 @@ require('../config.php');
             var id_undian = $(this).attr("id");
             var selected = $('select').find('option:selected').text();
 
-            $('#r_hadiah').change(function() {
-                var selected = $(this).find('option:selected').text();
-                alert(selected);
-            });
-
             $.ajax({
                 type: "get",
                 url: urlGetDataUndian + '?id=' + hasil,
@@ -559,9 +562,8 @@ require('../config.php');
                     $('#hasil-undian').append(`
                             <h3 class="h3noUndian">No Undian : ${hasil}</h3>
                             <h3 class="h2Center"><input type="text" name="nama_toko" id="nama_toko" value="${response.nama_toko}" style="border:none;text-align:center" readonly/></h3>
-                            <h3 class="h3hadiah">HADIAH YANG DI DAPAT</h3>
                             <br>
-                            <h3 class="h2Center"><input type="text" name="hadiah" id="hadiah" value="${hadiah}" style="border:none;text-align:center" readonly/></h3>
+                            <h3 class="h2Center"><input type="text" name="hadiah" id="hadiah" value="${hadiah}" style="border:none;text-align:center" hidden/></h3>
                             <input type="text" name="noundi" id="noundi" value="${response.nomor_undi}" style="border:none;text-align:center" hidden/>
                            `);
                 }

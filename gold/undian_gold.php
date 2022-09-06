@@ -1,9 +1,20 @@
 <?php
 require('../config.php');
+
+if (isset($_GET['id'])) {
+    $id_prize    = $_GET['id'];
+} else {
+    die("Error. No ID Selected!");
+}
+include "../config.php";
+
+$query    = mysqli_query($koneksi, "SELECT * FROM tb_prize WHERE id_prize='$id_prize'");
+$result    = mysqli_fetch_array($query);
+
 ?>
 
 <!DOCTYPE html>
-<html lang="id">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -11,21 +22,19 @@ require('../config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Rahmad Dawood">
     <meta name="description" content="Bangkitkan bilangan acak antara range tertentu.">
-    <title>Undian</title>
+    <title>Undian Gold</title>
 
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/bootstrap-grid.css" rel="stylesheet">
     <link href="../css/bootstrap-reboot.css" rel="stylesheet">
-    <link href="../css/bootstrap-themes.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <style>
         body {
@@ -96,10 +105,10 @@ require('../config.php');
 
         .posCard1 {
             position: absolute;
-            top: 420px;
+            top: 680px;
             left: 350px;
             width: 1200px;
-            height: 300px;
+            height: 320px;
             border-radius: 20px;
             border: black;
             border-style: solid;
@@ -164,8 +173,6 @@ require('../config.php');
         .img-thumbnail {
             background-color: transparent;
             border: none;
-            height: 200px;
-            width: auto;
         }
 
         .pemenang {
@@ -186,11 +193,6 @@ require('../config.php');
         .btn-warning:visited {
             background-color: linear-gradient(#FFE880, #B59451, #966D2F) !important;
         }
-
-        .gbr-custom {
-            height: 150px;
-            width: 150px;
-        }
     </style>
 </head>
 <!-- background-repeat: no-repeat; height:auto; background-size: cover; -->
@@ -204,37 +206,88 @@ require('../config.php');
             <div class="home" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i> Menu</a>
             </div>
+            <div class="menu" hidden>
+                <a href="#" class=" btn btn-warning btn-lg" id="btnBackMenu" role="button"><i class="fa fa-home"></i> Menu</a>
+            </div>
             <div class="page-header" style="margin-top:-10px;">
                 <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
                 <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
                 <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px">
             </div>
-            <div class="card posCard1 card-pilih ">
+            <div class="card posCard1 card-pilih" hidden>
                 <div class="card-header ">
-                    <h3>PILIH HADIAH UNDIAN</h3>
+                    <h2 class="silver">UNDIAN GOLD</h2>
                 </div>
-
-                <?php
-                $qprizesilver = " SELECT tb_prize.*,tb_undian.*
-                        FROM tb_prize
-                        JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.id_kat_undi
-                        WHERE tb_undian.kat_undian = 'gold' ";
-                $rprize1 = mysqli_query($koneksi, $qprizesilver);
-                ?>
-                
-                <div class="row ml-3">
-                    <?php while ($row = mysqli_fetch_array($rprize1)) :; ?>
-                        <div class="col-md-2 ml-4">
-                            <a href="../gold/undian_gold.php?id=<?php echo $row['id_prize'] ?>"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail sizes"></a>
+                <div class="card-body ">
+                    <form id="frmAngka" method="post" action="index.html">
+                        <div class="form-group lblhide">
+                            <label for="txtAwal" hidden>Angka awal</label>
+                            <input type="hidden" class="form-control" id="txtAwal" placeholder="Angka awal" min="1" value="0">
                         </div>
-                    <?php endwhile; ?>
+                        <div class="form-group lblhide">
+                            <label for="txtAkhir" hidden>Angka akhir</label>
+                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="7">
+                        </div>
+                        <div class="form-group lblhide">
+                            <label for="txtAwal1" hidden>Angka awal</label>
+                            <input type="hidden" class="form-control" id="txtAwal1" placeholder="Angka awal1" min="1" value="0">
+                        </div>
+                        <div class="form-group lblhide">
+                            <label for="txtAkhir1" hidden>Angka akhir</label>
+                            <input type="hidden" class="form-control" id="txtAkhir1" placeholder="Angka akhir1" min="1" value="9">
+                        </div>
+                        <div class="form-group lblhide">
+                            <label for="txtAwal1" hidden>Angka awal</label>
+                            <input type="hidden" class="form-control" id="txtAwal2" placeholder="Angka awal2" min="1" value="0">
+                        </div>
+                        <div class="form-group lblhide">
+                            <label for="txtAkhir1" hidden>Angka akhir</label>
+                            <input type="hidden" class="form-control" id="txtAkhir2" placeholder="Angka akhir2" min="1" value="9">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-block btn-success" id="btnAcak" onclick="mulai()">Mulai Undian</button>
                 </div>
             </div>
-            <div class="card-footer">
 
+            <div class="container-x" hidden>
+                <div class="row">
+                    <div class="col-sm">
+                        <p id="result_prize"><?php echo $result['nama_prize'] ?></p>
+                    </div>
+                </div>
             </div>
-    </div>
-    </center>
+
+            <div class="card mt-5 mb-5 posnoundi card-undi">
+                <div class="d-flex flex-row justify-content-center">
+                    <h3 class="col-md-2 h3FontCus" id="lblAngka"> x </h3>
+                    <h3 class="col-md-2 h3FontCus" id="lblAngka1"> x </h3>
+                    <h3 class="col-md-2 h3FontCus" id="lblAngka2"> x </h3>
+                </div>
+                <div class="card-footers">
+                    <button type="button" class="btn btn-block btn-success mt-2 mb-2 mr-2" id="btnBerhenti" disabled hidden>Berhenti</button>
+                </div>
+            </div>
+
+            <div class="modal" tabindex="-1" role="dialog" id="modalPrize">
+                <div class="modal-dialog modalCenter " role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h1 class="modal-title w-100">SELAMAT UNTUK</h1>
+                        </div>
+                        <div class="modal-body text-center">
+                            <form method="post" id="formWin" class="form-inline justify-content-center">
+                                <div id="hasil-undian">
+                                </div>
+                                <button type="submit" name="simpan" id="btnSimpan" class="btn btn-block btn-success mt-2">Lanjutkan Undian</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </center>
     </div>
 
     <!-- SCRIPT UNDIAN -->
@@ -253,26 +306,11 @@ require('../config.php');
         var akhir2 = 9;
         var jalan2 = false;
 
-        var awal3 = 0;
-        var akhir3 = 9;
-        var jalan3 = false;
-
-        var awal4 = 0;
-        var akhir4 = 9;
-        var jalan4 = false;
-
-        var awal5 = 0;
-        var akhir5 = 9;
-        var jalan5 = false;
-
-        var awal6 = 0;
-        var akhir6 = 9;
-        var jalan6 = false;
-
         var awal = 0;
         var akhir = 9;
         var jalan = false;
-        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian.php";
+
+        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian-gold.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
@@ -282,11 +320,15 @@ require('../config.php');
             location.href = "../gold/tampil_hadiah.php"
         })
 
+        $('#btnBackMenu').click(function() {
+            location.href = "../gold/index.php"
+        })
+
         $('#btnSimpan').click(function() {
             $("#formWin").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: '../saveWinSilver.php',
+                    url: '../saveWinGold.php',
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
@@ -322,6 +364,9 @@ require('../config.php');
             if (event.keyCode === 32) {
                 event.preventDefault();
                 document.querySelector('#btnAcak').click();
+            }  if (event.keyCode === 72) {
+                event.preventDefault();
+                document.querySelector('#btnBackMenu').click();
             }
         }
         let count = 0;
@@ -339,14 +384,6 @@ require('../config.php');
                 alert('Angka Awal Harus diisi!');
             else if ($.trim($('#txtAkhir2').val()) == '')
                 alert('Angka akhir harus diisi!')
-            else if ($.trim($('#txtAwal3').val()) == '')
-                alert('Angka Awal Harus diisi!');
-            else if ($.trim($('#txtAkhir3').val()) == '')
-                alert('Angka akhir harus diisi!')
-            else if ($.trim($('#txtAwal4').val()) == '')
-                alert('Angka Awal Harus diisi!');
-            else if ($.trim($('#txtAkhir4').val()) == '')
-                alert('Angka akhir harus diisi!')
             else {
                 awal = parseInt($("#txtAwal")[0].value);
                 $("#txtAwal").prop('disabled', true);
@@ -360,29 +397,15 @@ require('../config.php');
                 $("#txtAwal2").prop('disabled', true);
                 akhir2 = parseInt($("#txtAkhir2")[0].value);
 
-                awal3 = parseInt($("#txtAwal3")[0].value);
-                $("#txtAwal3").prop('disabled', true);
-                akhir3 = parseInt($("#txtAkhir3")[0].value);
-
-                awal4 = parseInt($("#txtAwal4")[0].value);
-                $("#txtAwal4").prop('disabled', true);
-                akhir4 = parseInt($("#txtAkhir4")[0].value);
-
-
                 $("#txtAkhir").prop('disabled', true);
                 $("#txtAkhir1").prop('disabled', true);
                 $("#txtAkhir2").prop('disabled', true);
-                $("#txtAkhir3").prop('disabled', true);
-                $("#txtAkhir4").prop('disabled', true);
-                $("#txtAkhir5").prop('disabled', true);
-                $("#txtAkhir6").prop('disabled', true);
+
                 $("#btnAcak").prop('disabled', true);
                 $("#btnBerhenti").prop('disabled', false);
                 $("#lblAngka").text(angkaAcak());
                 $("#lblAngka1").text(angkaAcak1());
                 $("#lblAngka2").text(angkaAcak2());
-                $("#lblAngka3").text(angkaAcak3());
-                $("#lblAngka4").text(angkaAcak4());
 
                 jalan = true;
                 setTimeout('ubahAngkaAcak()', 5);
@@ -392,13 +415,36 @@ require('../config.php');
         });
 
 
+        // function selesai() {
+
+
+
+        //     let hasil =
+        //         console.log(hasil)
+
+
+
+        //     if (hasil < 200) {
+        //         jalan = false;
+        //         jalan1 = false;
+        //         jalan2 = false;
+        //     } else {
+        //         jalan = true;
+        //         jalan1 = true;
+        //         jalan2 = true;
+        //         console.log(hasil);
+        //     }
+
+        //     return false;
+        // }
+
         $('#btnBerhenti').click(function() {
 
             var getundi = setInterval(function() {
 
-                let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html() + $('#lblAngka4').html();
+                let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html();
 
-                if (hasil > 46109) {
+                if (hasil > 708) {
                     jalan = true;
                     jalan1 = true;
                     jalan2 = true;
@@ -410,7 +456,12 @@ require('../config.php');
             }, 100)
 
             setTimeout('tmplPemenang()', 1500);
+
         });
+
+        // function checkHasil(){
+        //     let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html();    
+        // }
 
         $('#btnReset').click(function() {
             jalan = false;
@@ -430,33 +481,19 @@ require('../config.php');
             return Math.floor(Math.random() * (akhir2 - awal2 + 1) + awal2);
         }
 
-        function angkaAcak3() {
-            return Math.floor(Math.random() * (akhir3 - awal3 + 1) + awal3);
-        }
-
-        function angkaAcak4() {
-            return Math.floor(Math.random() * (akhir4 - awal4 + 1) + awal4);
-        }
-
         function ubahAngkaAcak() {
             if (jalan == true || jalan1 == true || jalan2 == true || jalan3 == true || jalan4 == true) {
                 document.getElementById("lblAngka").value = $('#lblAngka');
                 document.getElementById("lblAngka1").value = $('#lblAngka1');
                 document.getElementById("lblAngka2").value = $('#lblAngka2');
-                document.getElementById("lblAngka3").value = $('#lblAngka3');
-                document.getElementById("lblAngka4").value = $('#lblAngka4');
 
                 let angka = angkaAcak();
                 let angka1 = angkaAcak1();
                 let angka2 = angkaAcak2();
-                let angka3 = angkaAcak3();
-                let angka4 = angkaAcak4();
 
                 $("#lblAngka").text(angka);
                 $("#lblAngka1").text(angka1);
                 $("#lblAngka2").text(angka2);
-                $("#lblAngka3").text(angka3);
-                $("#lblAngka4").text(angka4);
 
                 setTimeout('ubahAngkaAcak()', 50);
 
@@ -471,12 +508,9 @@ require('../config.php');
             }
         }
 
-        function radioGet(getValue) {
-            document.getElementById('result_prize').innerHTML = getValue;
-        }
-
         function tmplPemenang() {
-            let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html() + $('#lblAngka4').html();
+
+            let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html();
             console.log(hasil);
 
             let hadiah = $('#result_prize').html()
@@ -485,11 +519,6 @@ require('../config.php');
             $('#modalPrize').modal("show");
             var id_undian = $(this).attr("id");
             var selected = $('select').find('option:selected').text();
-
-            $('#r_hadiah').change(function() {
-                var selected = $(this).find('option:selected').text();
-                alert(selected);
-            });
 
             $.ajax({
                 type: "get",
@@ -500,17 +529,15 @@ require('../config.php');
                 dataType: "json",
                 success: function(response) {
                     $('#hasil-undian').append(`
-                            <h3 class="h3noUndian">No Undian : ${hasil}</h3>
+                              <h3 class="h3noUndian">No Undian : ${hasil}</h3>
                             <h3 class="h2Center"><input type="text" name="nama_toko" id="nama_toko" value="${response.nama_toko}" style="border:none;text-align:center" readonly/></h3>
-                            <h3 class="h3hadiah">HADIAH YANG DI DAPAT</h3>
                             </br>
-                            <h3 class="h2Center"><input type="text" name="hadiah" id="hadiah" value="${hadiah}" style="border:none;text-align:center" readonly/></h3>
+                            <h3 class="h2Center"><input type="text" name="hadiah" id="hadiah" value="${hadiah}" style="border:none;text-align:center" hidden/></h3>
                             <input type="text" name="noundi" id="noundi" value="${response.nomor_undi}" style="border:none;text-align:center" hidden/>
                            `);
                 }
             });
         }
-
 
         function getInputValue() {
             var inputVal = document.setElementById("myInput").value = $('$lblAngka');

@@ -230,15 +230,10 @@ require('../config.php');
                         WHERE tb_undian.kat_undian = 'silver_2' ";
                     $rprize1 = mysqli_query($koneksi, $qprizesilver);
                     ?>
-                    <div class="row">
+                    <div class="row ml-3">
                         <?php while ($row = mysqli_fetch_array($rprize)) :; ?>
-                            <div class="col-md-2 ml-5">
+                            <div class="col-md-2 ml-4">
                                 <a href="../silver/undian_silver.php?id=<?php echo $row['id_prize']?>"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail sizes"></a>
-                            </div>
-                        <?php endwhile; ?>
-                        <?php while ($row = mysqli_fetch_array($rprize1)) :; ?>
-                            <div class="col-md-2 ml-5 mt-3">
-                                <a href="#"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail sizes"></a>
                             </div>
                         <?php endwhile; ?>
                     </div>

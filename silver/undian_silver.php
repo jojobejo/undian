@@ -32,11 +32,11 @@ $result    = mysqli_fetch_array($query);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?sans-serif=Lobstertwo">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <style>
         body {
@@ -44,12 +44,10 @@ $result    = mysqli_fetch_array($query);
             background-repeat: no-repeat;
             background-size: cover;
         }
-
         .modalCenter {
             top: 35% !important;
             transform: translateY(-50%) !important;
         }
-
         .h3Center {
             text-align: center;
         }
@@ -113,7 +111,7 @@ $result    = mysqli_fetch_array($query);
 
         .posnoundi {
             position: absolute;
-            top: 550px;
+            top: 450px;
             left: 250px;
             width: 1400px;
             height: 190px;
@@ -232,6 +230,9 @@ $result    = mysqli_fetch_array($query);
             <div class="home" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i> Menu</a>
             </div>
+            <div class="menu" hidden>
+                <a href="#" class=" btn btn-warning btn-lg" id="btnBackMenu" role="button"><i class="fa fa-home"></i> Menu</a>
+            </div>
             <div class="page-header" style="margin-top:-10px;">
                 <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
                 <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
@@ -306,8 +307,9 @@ $result    = mysqli_fetch_array($query);
             
             <div class="container-x">
                 <div class="row">
-                    <div class="col"><p id="result_prize" hidden><?php echo $result['nama_prize'] ?></p>
-                        <img src="../images/hadiah/<?php echo $result['img'] ?>" class="img-thumbnail sizes">
+                    <div class="col-sm">
+                        <p id="result_prize" hidden><?php echo $result['id_prize'] ?></p>
+                        <p id="id_hadiah" hidden><?php echo $result['id_prize'] ?></p>
                     </div>
                 </div>
             </div>
@@ -384,15 +386,23 @@ $result    = mysqli_fetch_array($query);
         var awal = 0;
         var akhir = 9;
         var jalan = false;
-        var urlGetDataUndian = "http://localhost/undian/get-detail-undian.php";
+        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
         })
 
+        var id_hadiah = $('#id_hadiah').html();
+
+
         $('#btnTampil').click(function() {
-            location.href = "../silver/tampil_hadiah.php"
+            location.href = "../silver/tampil_hadiah.php?id=<?= $result['id_prize']?>"
         })
+
+        $('#btnBackMenu').click(function(){
+            location.href = "../silver/index.php"
+        })
+
         $('#btnSimpan').click(function() {
             $("#formWin").submit(function(e) {
                 e.preventDefault();
@@ -408,11 +418,13 @@ $result    = mysqli_fetch_array($query);
         })
 
         window.onkeydown = function(event) {
+
             // Kode
             // 13  = enter
             // 220 = \
             // 8   = backspace
             // 16  = shift
+            // 72  = H
 
             if (event.keyCode === 13) {
                 event.preventDefault();
@@ -422,7 +434,7 @@ $result    = mysqli_fetch_array($query);
                 event.preventDefault();
                 document.querySelector('#btnHome').click();
             }
-            if (event.keyCode === 222) {
+            if (event.keyCode === 220) {
                 event.preventDefault();
                 document.querySelector('#btnTampil').click();
             }
@@ -433,6 +445,10 @@ $result    = mysqli_fetch_array($query);
             if (event.keyCode === 32) {
                 event.preventDefault();
                 document.querySelector('#btnAcak').click();
+            }
+            if (event.keyCode === 72) {
+                event.preventDefault();
+                document.querySelector('#btnBackMenu').click();
             }
         }
         let count = 0;
