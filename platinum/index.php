@@ -246,7 +246,6 @@ require('../config.php');
                 </div>
             </div>
 
-
             <?php
             $qprize = " SELECT tb_prize.*,tb_undian.*
                         FROM tb_prize
@@ -334,7 +333,7 @@ require('../config.php');
             $("#formWin").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: '../saveWinGold.php',
+                    url: '../saveWinPlatinum.php',
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {

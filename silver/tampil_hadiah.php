@@ -92,7 +92,7 @@ include "../config.php";
 
                 <div class="card-body">
                     <div class="row">
-                        <div class='col-sm-12 mt-2'>
+                        <div class='col-sm-12 mt-5'>
                             <div class="card  card-pilih">
                                 <?php foreach ($hadiah as $ha) {; ?>
                                     <div class="card-header">

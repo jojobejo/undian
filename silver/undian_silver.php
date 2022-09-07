@@ -394,7 +394,6 @@ $result    = mysqli_fetch_array($query);
 
         var id_hadiah = $('#id_hadiah').html();
 
-
         $('#btnTampil').click(function() {
             location.href = "../silver/tampil_hadiah.php?id=<?= $result['id_prize']?>"
         })
@@ -579,6 +578,8 @@ $result    = mysqli_fetch_array($query);
                 let angka3 = angkaAcak3();
                 let angka4 = angkaAcak4();
 
+                let settings = angka4 - angka4
+
                 $("#lblAngka").text(angka);
                 $("#lblAngka1").text(angka1);
                 $("#lblAngka2").text(angka2);
@@ -603,6 +604,7 @@ $result    = mysqli_fetch_array($query);
         }
 
         function tmplPemenang() {
+            
             let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html() + $('#lblAngka4').html();
             console.log(hasil);
 

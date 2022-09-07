@@ -459,6 +459,8 @@ require('../config.php');
                 let angka3 = angkaAcak3();
                 let angka4 = angkaAcak4();
 
+                
+
                 $("#lblAngka").text(angka);
                 $("#lblAngka1").text(angka1);
                 $("#lblAngka2").text(angka2);

@@ -58,21 +58,24 @@
         position: absolute;
         top: 400px;
         left: 250px;
-       
+
     }
+
     .menuGold {
         position: absolute;
         top: 400px;
         left: 550px;
-       
+
     }
+
     .menuPlatinum {
         position: absolute;
         top: 400px;
         left: 850px;
-       
+
     }
-    h1{
+
+    h1 {
         font-family: "DynaPuff", sans-serif;
         color: gold;
         position: absolute;
@@ -81,7 +84,6 @@
         top: 280px;
         left: 370px;
     }
-
 </style>
 
 <body>
@@ -92,9 +94,55 @@
     </div>
     <div>
         <h1> Pilih Katagori Undian </h1>
-        <a href="silver/index.php" class="menuSilver"><img src="images/Kupon S.png"></a>
-        <a href="gold/index.php" class="menuGold"><img src="images/Kupon.png"></a>
-        <a href="platinum/index.php" class="menuPlatinum"><img src="images/Kupon P.png"></a>
+        <div id="silver">
+            <a href="silver/index.php" class="menuSilver"><img src="images/Kupon S.png"></a>
+        </div>
+        <div id="gold">
+            <a href="gold/index.php" class="menuGold"><img src="images/Kupon.png"></a>
+        </div>
+        <div id="platinum">
+            <a href="platinum/index.php" class="menuPlatinum"><img src="images/Kupon P.png"></a>
+        </div>
+        <div id="extra">
+            <a href="platinum/index.php" class="menuPlatinum"><img src="images/Kupon P.png"></a>
+        </div>
     </div>
+
+    <script>
+        
+        $('#silver').click(function() {
+            location.href = "../undian/silver/index.php"
+        })
+        $('#gold').click(function() {
+            location.href = "../undian/gold/index.php"
+        })
+        $('#platinum').click(function() {
+            location.href = "../undian/platinum/index.php"
+        })
+        $('#extra').click(function() {
+            location.href = "../undian/extra/index.php"
+        })
+
+        window.onkeydown = function(event)
+        {
+            if (event.keyCode === 49) {
+                event.preventDefault();
+                document.querySelector('#silver').click();
+            }
+            if (event.keyCode === 50) {
+                event.preventDefault();
+                document.querySelector('#gold').click();
+            }
+            if (event.keyCode === 51) {
+                event.preventDefault();
+                document.querySelector('#platinum').click();
+            }
+            if (event.keyCode === 52) {
+                event.preventDefault();
+                document.querySelector('#extra').click();
+            }
+        }
+    </script>
 </body>
+
 </html>

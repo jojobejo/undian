@@ -1,6 +1,16 @@
 <?php
 require('../config.php');
+
+if (isset($_GET['id'])) {
+    $id_prize    = $_GET['id'];
+} else {
+    die("Error. No ID Selected!");
+}
+include "../config.php";
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -33,33 +43,12 @@ require('../config.php');
             background-size: cover;
         }
 
-        .logo1 {
-            position: absolute;
-            left: 700px;
-        }
-
-        .logo2 {
-            position: absolute;
-            left: 300px;
-            top: -30px;
-        }
-
-        .logo3 {
-            position: absolute;
-            left: 800px;
-            top: 250px;
-        }
-
         .card-pilih {
             background-image: linear-gradient(#DCBB60, #FFE880, #B59451, #966D2F);
         }
 
         .posCard1 {
-            position: absolute;
-            top: 400px;
-            left: 60px;
-            width: 1700px;
-            height: 320px;
+
             border-radius: 20px;
             border: black;
             border-style: solid;
@@ -69,16 +58,9 @@ require('../config.php');
 
 <body>
     <center>
-
-
         <div class="container">
-            <div class="page-header" style="margin-top:-10px;">
-                <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
-                <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
-                <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px">
-            </div>
 
-            <div class="card posCard1 card-pilih ">
+            <div class="card posCard1 card-pilih mt-5">
                 <div class="card-header ">
                     <h2 class="silver">Selamat Kepada</h2>
                     <h2 class="silver">Pemenang Undian Gold</h2>
@@ -86,33 +68,48 @@ require('../config.php');
                 </div>
 
                 <?php
-                $qprize = " SELECT tb_win.*,tb_undian.*
+
+                $qhadiah = "SELECT tb_win.*,tb_undian.*,tb_prize.*
                 FROM tb_win
                 JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
-                where tb_undian.kat_undian = 'gold'";
-                $rprize = mysqli_query($koneksi, $qprize);
+                JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
+                where tb_undian.kat_undian = 'gold'
+                AND tb_prize.id_prize = $id_prize
+                LIMIT 1";
+                $hadiah = mysqli_query($koneksi, $qhadiah);
+
+                $no = 1.;
+                $qhasil = " SELECT tb_win.*,tb_undian.*,tb_prize.*
+                FROM tb_win
+                JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
+                JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
+                where tb_undian.kat_undian = 'gold'
+                AND tb_prize.id_prize = $id_prize";
+
+                $hasil = mysqli_query($koneksi, $qhasil);
+
                 ?>
 
-                <div class="card-body ">
+                <div class="card-body">
                     <div class="row">
-                        <?php while ($row = mysqli_fetch_array($rprize)) :; ?>
-                            <div class='col md-4'>
-                                <div class="card  card-pilih">
+                        <div class='col-sm-12 mt-2'>
+                            <div class="card  card-pilih">
+                                <?php foreach ($hadiah as $ha) {; ?>
                                     <div class="card-header">
-                                        <h3><?= $row['hadiah'] ?></h3>
+                                        <h3>Hadiah <?php echo $ha['nama_prize'] ?></h3>
                                     </div>
+                                <?php }; ?>
+                                <?php foreach ($hasil as $h) {; ?>
                                     <div class="body">
                                         <div class="row">
-                                            <div class="col md-1">
-                                                <h3><?= $row['nama_toko'] ?></h3>
+                                            <div class="col-md-12">
+                                                <h3 style="text-align:center ;"><?php echo $no++ ?>. <?php echo $h['nama_toko'] ?></h3>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-
+                                <?php }; ?>
                             </div>
-                        <?php endwhile; ?>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -122,5 +119,12 @@ require('../config.php');
         </div>
     </center>
 </body>
+
+<script type="text/javascript">
+        setTimeout(function() {
+            location = ''
+        }, 2000)
+    
+</script>
 
 </html>

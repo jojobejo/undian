@@ -216,17 +216,18 @@ $result    = mysqli_fetch_array($query);
             </div>
             <div class="card posCard1 card-pilih" hidden>
                 <div class="card-header ">
-                    <h2 class="silver">UNDIAN GOLD</h2>
+                    <h3 class="silver">UNDIAN SILVER</h2>
+                        
                 </div>
-                <div class="card-body ">
+                <div class="card-body">
                     <form id="frmAngka" method="post" action="index.html">
                         <div class="form-group lblhide">
                             <label for="txtAwal" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal" placeholder="Angka awal" min="1" value="0">
+                            <input type="hidden" class="form-control" id="txtAwal" placeholder="Angka awal" min="0" value="0">
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAkhir" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="7">
+                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="4">
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAwal1" hidden>Angka awal</label>
@@ -244,19 +245,53 @@ $result    = mysqli_fetch_array($query);
                             <label for="txtAkhir1" hidden>Angka akhir</label>
                             <input type="hidden" class="form-control" id="txtAkhir2" placeholder="Angka akhir2" min="1" value="9">
                         </div>
+                        <div class="form-group lblhide">
+                            <label for="txtAwal1" hidden>Angka awal</label>
+                            <input type="hidden" class="form-control" id="txtAwal3" placeholder="Angka awal3" min="1" value="0">
+                        </div>
+                        <div class="form-group lblhide">
+                            <label for="txtAkhir1" hidden>Angka akhir</label>
+                            <input type="hidden" class="form-control" id="txtAkhir3" placeholder="Angka akhir3" min="1" value="9">
+                        </div>
+                        <div class="form-group lblhide">
+                            <label for="txtAwal1" hidden>Angka awal</label>
+                            <input type="hidden" class="form-control" id="txtAwal4" placeholder="Angka awal2" min="1" value="0">
+                        </div>
+                        <div class="form-group lblhide">
+                            <label for="txtAkhir1" hidden>Angka akhir</label>
+                            <input type="hidden" class="form-control" id="txtAkhir4" placeholder="Angka akhir2" min="1" value="9">
+                        </div>
+                        <div class="form-group lblhide">
+                            <label for="txtAwal1" hidden>Angka awal</label>
+                            <input type="hidden" class="form-control" id="txtAwal5" placeholder="Angka awal2" min="1" value="0">
+                        </div>
+                        <div class="form-group lblhide">
+                            <label for="txtAkhir1" hidden>Angka akhir</label>
+                            <input type="hidden" class="form-control" id="txtAkhir5" placeholder="Angka akhir2" min="1" value="9">
+                        </div>
+                        <div class="form-group lblhide">
+                            <label for="txtAwal1" hidden>Angka awal</label>
+                            <input type="hidden" class="form-control" id="txtAwal6" placeholder="Angka awal2" min="1" value="0">
+                        </div>
+                        <div class="form-group lblhide">
+                            <label for="txtAkhir1" hidden>Angka akhir</label>
+                            <input type="hidden" class="form-control" id="txtAkhir6" placeholder="Angka akhir2" min="1" value="9">
+                        </div>
                     </form>
                 </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-block btn-success" id="btnAcak" onclick="mulai()">Mulai Undian</button>
+            </div>
+            
+            <div class="container-x">
+                <div class="row">
+                    <div class="col-sm">
+                        <p id="result_prize" hidden><?php echo $result['id_prize'] ?></p>
+                        <p id="id_hadiah" hidden><?php echo $result['id_prize'] ?></p>
+                    </div>
                 </div>
             </div>
 
-            <div class="container-x" hidden>
-                <div class="row">
-                    <div class="col-sm">
-                        <p id="result_prize"><?php echo $result['nama_prize'] ?></p>
-                    </div>
-                </div>
+            <div class="btnMulaiUndi" hidden>
+                <button type="button" class="btn btn-block btn-primary" id="btnAcak" onclick="mulai()">Mulai Undian</button>
             </div>
 
             <div class="card mt-5 mb-5 posnoundi card-undi">
@@ -317,7 +352,7 @@ $result    = mysqli_fetch_array($query);
         })
 
         $('#btnTampil').click(function() {
-            location.href = "../gold/tampil_hadiah.php"
+            location.href = "../gold/tampil_hadiah.php?id=<?= $result['id_prize']?>"
         })
 
         $('#btnBackMenu').click(function() {
@@ -353,7 +388,7 @@ $result    = mysqli_fetch_array($query);
                 event.preventDefault();
                 document.querySelector('#btnHome').click();
             }
-            if (event.keyCode === 222) {
+            if (event.keyCode === 220) {
                 event.preventDefault();
                 document.querySelector('#btnTampil').click();
             }
@@ -364,6 +399,7 @@ $result    = mysqli_fetch_array($query);
             if (event.keyCode === 32) {
                 event.preventDefault();
                 document.querySelector('#btnAcak').click();
+
             }  if (event.keyCode === 72) {
                 event.preventDefault();
                 document.querySelector('#btnBackMenu').click();
