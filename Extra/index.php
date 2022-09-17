@@ -372,7 +372,7 @@ require('../config.php');
             </div>
             <div class="card posCard1 card-pilih" hidden>
                 <div class="card-header" hidden>
-                    <h2 class="silver">UNDIAN PLATINUM</h2>
+                    <h2 class="silver">UNDIAN Extra Motor</h2>
                 </div>
                 <div class="card-body" hidden>
                     <form id="frmAngka" method="post" action="index.html">
@@ -499,7 +499,7 @@ require('../config.php');
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian-gold.php";
+        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian-platinum.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
@@ -512,7 +512,7 @@ require('../config.php');
             $("#formWin").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: '../saveWinPlatinum.php',
+                    url: '../saveWinExtra.php',
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
@@ -627,7 +627,7 @@ require('../config.php');
                     jalan = false;
                     jalan1 = false;
                     jalan2 = false;
-                    setTimeout('tmplPemenang()', 1500);
+                    setTimeout('tmplPemenang()', 500);
                     break;
             }
             return false;

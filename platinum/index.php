@@ -198,10 +198,12 @@ require('../config.php');
     <div class="container">
         <center>
             <div class="pemenang" hidden>
-                <a href="#" class=" btn btn-warning btn-lg" id="btnTampil" role="button"><i class="fa fa-trophy"></i> Tampilkan Pemenang</a>
+                <a href="#" class=" btn btn-warning btn-lg" id="btnTampil" role="button"><i class="fa fa-trophy"></i>
+                    Tampilkan Pemenang</a>
             </div>
             <div class="home" hidden>
-                <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i> Menu</a>
+                <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i>
+                    Menu</a>
             </div>
             <div class="page-header" style="margin-top:-10px;">
                 <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
@@ -228,7 +230,7 @@ require('../config.php');
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir1" placeholder="Angka akhir1" min="1" value="9">
+                            <input type="hidden" class="form-control" id="txtAkhir1" placeholder="Angka akhir1" min="1" value="6">
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAwal1" hidden>Angka awal</label>
@@ -242,7 +244,8 @@ require('../config.php');
                     </form>
                 </div>
                 <div class="card-footer" hidden>
-                    <button type="submit" class="btn btn-block btn-success" id="btnAcak" onclick="mulai()">Mulai Undian</button>
+                    <button type="submit" class="btn btn-block btn-success" id="btnAcak" onclick="mulai()">Mulai
+                        Undian</button>
                 </div>
             </div>
 
@@ -320,7 +323,7 @@ require('../config.php');
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian-gold.php";
+        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian-platinum.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
@@ -405,7 +408,7 @@ require('../config.php');
                 $("#lblAngka1").text(angkaAcak1());
                 $("#lblAngka2").text(angkaAcak2());
 
-                count = 4;
+                count = 6;
 
                 jalan = true;
                 jalan1 = true;
@@ -424,31 +427,46 @@ require('../config.php');
         $('#btnBerhenti').click(function() {
 
             count--;
-            let hasil1 = $('#lblAngka1').html();
-            let hasil2 = $('#lblAngka').html();
+            let hasil3 = $('#lblAngka2').html();
+            let hasil2 = $('#lblAngka1').html();
+            let hasil1 = $('#lblAngka').html();
+
+            let hasil = $('#lblAngka1').html() + $('#lblAngka2').html();
 
             switch (count) {
-                case 3:
+                case 5:
                     jalan = true;
                     jalan1 = true;
                     jalan2 = false
                     break;
-                case 2:
+                case 4:
                     jalan = true;
-                    if (hasil1 > 9) {
-                        jalan1 = true;
-                    } else {
-                        jalan1 = false;
-                    }
-                    jalan2 = false;
-
-                    break;
-                case 1:
-
-                    jalan = false;
                     jalan1 = false;
                     jalan2 = false;
-                    setTimeout('tmplPemenang()', 1500);
+                    break;
+                case 3:
+                    if (hasil1 == 2) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 2:
+                    if (hasil1 == 2) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 1:
+                    if (hasil1 == 2) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
                     break;
             }
             return false;
@@ -480,7 +498,7 @@ require('../config.php');
 
                 $("#lblAngka").text(angka);
 
-                setTimeout('ubahAngkaAcak()', 50);
+                setTimeout('ubahAngkaAcak()', 5);
 
             } else {
 
@@ -501,7 +519,7 @@ require('../config.php');
 
                 $("#lblAngka1").text(angka1);
 
-                setTimeout('ubahAngkaAcak1()', 50);
+                setTimeout('ubahAngkaAcak1()', 5);
 
             } else {
 
@@ -522,7 +540,7 @@ require('../config.php');
 
                 $("#lblAngka2").text(angka2);
 
-                setTimeout('ubahAngkaAcak2()', 50);
+                setTimeout('ubahAngkaAcak2()', 5);
 
             } else {
 

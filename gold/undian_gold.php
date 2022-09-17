@@ -203,6 +203,9 @@ $result    = mysqli_fetch_array($query);
             <div class="pemenang" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnTampil" role="button"><i class="fa fa-trophy"></i> Tampilkan Pemenang</a>
             </div>
+            <div class="pemenang" hidden>
+                <a href="#" class=" btn btn-warning btn-lg" id="btnTampil_1" role="button"><i class="fa fa-trophy"></i> Tampilkan Pemenang</a>
+            </div>
             <div class="home" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i> Menu</a>
             </div>
@@ -216,7 +219,7 @@ $result    = mysqli_fetch_array($query);
             </div>
             <div class="card posCard1 card-pilih" hidden>
                 <div class="card-header ">
-                    <h3 class="silver">UNDIAN SILVER</h2>
+                    <h3 class="silver">UNDIAN GOLD</h2>
                         
                 </div>
                 <div class="card-body">
@@ -227,7 +230,7 @@ $result    = mysqli_fetch_array($query);
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAkhir" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="4">
+                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="7">
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAwal1" hidden>Angka awal</label>
@@ -249,34 +252,7 @@ $result    = mysqli_fetch_array($query);
                             <label for="txtAwal1" hidden>Angka awal</label>
                             <input type="hidden" class="form-control" id="txtAwal3" placeholder="Angka awal3" min="1" value="0">
                         </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir3" placeholder="Angka akhir3" min="1" value="9">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAwal1" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal4" placeholder="Angka awal2" min="1" value="0">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir4" placeholder="Angka akhir2" min="1" value="9">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAwal1" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal5" placeholder="Angka awal2" min="1" value="0">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir5" placeholder="Angka akhir2" min="1" value="9">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAwal1" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal6" placeholder="Angka awal2" min="1" value="0">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir6" placeholder="Angka akhir2" min="1" value="9">
-                        </div>
+                    
                     </form>
                 </div>
             </div>
@@ -354,6 +330,9 @@ $result    = mysqli_fetch_array($query);
         $('#btnTampil').click(function() {
             location.href = "../gold/tampil_hadiah.php?id=<?= $result['id_prize']?>"
         })
+        $('#btnTampil_1').click(function() {
+            location.href = "../gold/tampil_hadiah_1.php"
+        })
 
         $('#btnBackMenu').click(function() {
             location.href = "../gold/index.php"
@@ -391,6 +370,10 @@ $result    = mysqli_fetch_array($query);
             if (event.keyCode === 220) {
                 event.preventDefault();
                 document.querySelector('#btnTampil').click();
+            }
+            if (event.keyCode === 221) {
+                event.preventDefault();
+                document.querySelector('#btnTampil_1').click();
             }
             if (event.keyCode === 16) {
                 event.preventDefault();
@@ -484,14 +467,42 @@ $result    = mysqli_fetch_array($query);
                     jalan = true;
                     jalan1 = true;
                     jalan2 = true;
-                } else {
+                } 
+                else if(hasil == 123)
+                {
+                    jalan = true;
+                    jalan1 = true;
+                    jalan2 = true;
+                }
+                else if(hasil == 321)
+                {
+                    jalan = true;
+                    jalan1 = true;
+                    jalan2 = true;
+                }
+                else if(hasil == 741)
+                {
+                    jalan = true;
+                    jalan1 = true;
+                    jalan2 = true;
+                }
+                else if(hasil == 0)
+                {
+                    jalan = true;
+                    jalan1 = true;
+                    jalan2 = true;
+                }
+               
+                else {
                     jalan = false;
                     jalan1 = false;
                     jalan2 = false;
                 }
-            }, 100)
 
-            setTimeout('tmplPemenang()', 1500);
+            }, 5)
+
+            console.log(getundi)
+            setTimeout('tmplPemenang()',300);
 
         });
 
@@ -518,7 +529,7 @@ $result    = mysqli_fetch_array($query);
         }
 
         function ubahAngkaAcak() {
-            if (jalan == true || jalan1 == true || jalan2 == true || jalan3 == true || jalan4 == true) {
+            if (jalan == true || jalan1 == true || jalan2 == true ) {
                 document.getElementById("lblAngka").value = $('#lblAngka');
                 document.getElementById("lblAngka1").value = $('#lblAngka1');
                 document.getElementById("lblAngka2").value = $('#lblAngka2');
@@ -531,7 +542,7 @@ $result    = mysqli_fetch_array($query);
                 $("#lblAngka1").text(angka1);
                 $("#lblAngka2").text(angka2);
 
-                setTimeout('ubahAngkaAcak()', 50);
+                setTimeout('ubahAngkaAcak()', 5);
 
             } else {
 
@@ -547,10 +558,8 @@ $result    = mysqli_fetch_array($query);
         function tmplPemenang() {
 
             let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html();
-            console.log(hasil);
 
             let hadiah = $('#result_prize').html()
-            console.log(hadiah);
 
             $('#modalPrize').modal("show");
             var id_undian = $(this).attr("id");

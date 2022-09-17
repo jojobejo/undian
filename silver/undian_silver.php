@@ -34,7 +34,7 @@ $result    = mysqli_fetch_array($query);
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?sans-serif=Lobstertwo">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?sans-serif=Lobstertwo"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
@@ -227,6 +227,9 @@ $result    = mysqli_fetch_array($query);
             <div class="pemenang" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnTampil" role="button"><i class="fa fa-trophy"></i> Tampilkan Pemenang</a>
             </div>
+            <div class="pemenang" hidden>
+                <a href="#" class=" btn btn-warning btn-lg" id="btnTampil_1" role="button"><i class="fa fa-trophy"></i> Tampilkan Pemenang</a>
+            </div>
             <div class="home" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i> Menu</a>
             </div>
@@ -395,7 +398,11 @@ $result    = mysqli_fetch_array($query);
         var id_hadiah = $('#id_hadiah').html();
 
         $('#btnTampil').click(function() {
-            location.href = "../silver/tampil_hadiah.php?id=<?= $result['id_prize']?>"
+            location.href = "../silver/tampil_hadiah.php"
+        })
+
+        $('#btnTampil_1').click(function() {
+            location.href = "../silver/tampil_hadiah_1.php"
         })
 
         $('#btnBackMenu').click(function(){
@@ -436,6 +443,10 @@ $result    = mysqli_fetch_array($query);
             if (event.keyCode === 220) {
                 event.preventDefault();
                 document.querySelector('#btnTampil').click();
+            }
+            if (event.keyCode === 221) {
+                event.preventDefault();
+                document.querySelector('#btnTampil_1').click();
             }
             if (event.keyCode === 16) {
                 event.preventDefault();
@@ -533,9 +544,9 @@ $result    = mysqli_fetch_array($query);
                     jalan1 = false;
                     jalan2 = false;
                 }
-            }, 100)
+            }, 50)
 
-            setTimeout('tmplPemenang()', 1500);
+            setTimeout('tmplPemenang()', 50);
         });
 
         $('#btnReset').click(function() {
@@ -586,7 +597,7 @@ $result    = mysqli_fetch_array($query);
                 $("#lblAngka3").text(angka3);
                 $("#lblAngka4").text(angka4);
 
-                setTimeout('ubahAngkaAcak()', 50);
+                setTimeout('ubahAngkaAcak()', 5);
 
             } else {
 
