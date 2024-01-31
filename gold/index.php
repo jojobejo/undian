@@ -191,6 +191,18 @@ require('../config.php');
             height: 150px;
             width: 150px;
         }
+
+        .posHadiah {
+            position: absolute;
+            margin-left: -50px;
+            margin-top: 10px;
+        }
+        .grand_gold{
+            position: absolute;
+            top: 300px;
+            left: 500px;
+            
+        }
     </style>
 </head>
 <!-- background-repeat: no-repeat; height:auto; background-size: cover; -->
@@ -200,6 +212,9 @@ require('../config.php');
         <center>
             <div class="pemenang" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnTampil" role="button"><i class="fa fa-trophy"></i> Tampilkan Pemenang</a>
+            </div>
+            <div class="pemenang" hidden>
+                <a href="#" class=" btn btn-warning btn-lg" id="btnTampil_1" role="button"><i class="fa fa-trophy"></i> Tampilkan Pemenang</a>
             </div>
             <div class="home" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i> Menu</a>
@@ -221,13 +236,17 @@ require('../config.php');
                         WHERE tb_undian.kat_undian = 'gold' ";
                 $rprize1 = mysqli_query($koneksi, $qprizesilver);
                 ?>
-                
-                <div class="row ml-3">
+
+                <div class="row ml-5">
                     <?php while ($row = mysqli_fetch_array($rprize1)) :; ?>
-                        <div class="col-md-2 ml-4">
-                            <a href="../gold/undian_gold.php?id=<?php echo $row['id_prize'] ?>"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail sizes"></a>
+                        <div class="col-md-2 ml-5 ">
+                            <a href="../gold/undian_gold.php?id=<?php echo $row['id_prize'] ?>"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail sizes posHadiah"></a>
                         </div>
+
                     <?php endwhile; ?>
+                </div>
+                <div class="grand_gold">
+                    <a href="../gold/undian_motor.php"><img>Grand Prize Motor</a>
                 </div>
             </div>
             <div class="card-footer">
@@ -282,6 +301,10 @@ require('../config.php');
             location.href = "../gold/tampil_hadiah.php"
         })
 
+        $('#btnTampil_1').click(function() {
+            localtion.href = "../gold/tampil_hadiah_1.php"
+        })
+
         $('#btnSimpan').click(function() {
             $("#formWin").submit(function(e) {
                 e.preventDefault();
@@ -311,9 +334,13 @@ require('../config.php');
                 event.preventDefault();
                 document.querySelector('#btnHome').click();
             }
-            if (event.keyCode === 222) {
+            if (event.keyCode === 220) {
                 event.preventDefault();
                 document.querySelector('#btnTampil').click();
+            }
+            if (event.keyCode === 221) {
+                event.preventDefault();
+                document.querySelector('#btnTampil_1').click();
             }
             if (event.keyCode === 16) {
                 event.preventDefault();

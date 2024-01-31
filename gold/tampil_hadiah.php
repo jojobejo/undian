@@ -1,11 +1,7 @@
 <?php
 require('../config.php');
 
-if (isset($_GET['id'])) {
-    $id_prize    = $_GET['id'];
-} else {
-    die("Error. No ID Selected!");
-}
+
 include "../config.php";
 
 ?>
@@ -26,15 +22,14 @@ include "../config.php";
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/bootstrap-grid.css" rel="stylesheet">
     <link href="../css/bootstrap-reboot.css" rel="stylesheet">
-    <link href="../css/bootstrap-themes.css" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <style>
         body {
@@ -53,78 +48,246 @@ include "../config.php";
             border: black;
             border-style: solid;
         }
+
+        table {
+            border: 0px;
+        }
+
+        table.fontTb {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .borderless td,
+        .borderless th {
+            border: none;
+        }
+
+        td.a {
+            text-align: right;
+        }
+
+        td.b {
+            text-align: center;
+        }
+
+        td.c {
+            text-align: center;
+        }
+
+        .card.body {
+            border-radius: 10px;
+        }
     </style>
 </head>
 
 <body>
     <center>
-        <div class="container">
 
-            <div class="card posCard1 card-pilih mt-5">
-                <div class="card-header ">
-                    <h2 class="silver">Selamat Kepada</h2>
-                    <h2 class="silver">Pemenang Undian Gold</h2>
-                    <p id="result_prize" hidden></p>
-                </div>
+        <div class="pemenang" hidden>
+            <a href="#" class=" btn btn-warning btn-lg" id="btnTampil" role="button"><i class="fa fa-trophy"></i> Tampilkan Pemenang</a>
+        </div>
 
-                <?php
+        <div class="card posCard1 card-pilih m-5 ">
+            <div class="card-header ">
+                <h2 class="silver">Selamat Kepada</h2>
+                <h2 class="silver">Pemenang Undian Gold</h2>
+                <p id="result_prize" hidden></p>
+            </div>
 
-                $qhadiah = "SELECT tb_win.*,tb_undian.*,tb_prize.*
-                FROM tb_win
-                JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
-                JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
-                where tb_undian.kat_undian = 'gold'
-                AND tb_prize.id_prize = $id_prize
-                LIMIT 1";
-                $hadiah = mysqli_query($koneksi, $qhadiah);
+            <?php
 
-                $no = 1.;
-                $qhasil = " SELECT tb_win.*,tb_undian.*,tb_prize.*
-                FROM tb_win
-                JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
-                JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
-                where tb_undian.kat_undian = 'gold'
-                AND tb_prize.id_prize = $id_prize";
+            $qhadiah = "SELECT tb_win.*,tb_undian.*,tb_prize.*
+                        FROM tb_win
+                        JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
+                        JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
+                        where tb_undian.kat_undian = 'gold'
+                        AND tb_win.id_prize = 11
+                        ";
+            $hadiah = mysqli_query($koneksi, $qhadiah);
 
-                $hasil = mysqli_query($koneksi, $qhasil);
+            $qhadiah1 = "SELECT tb_win.*,tb_undian.*,tb_prize.*
+                        FROM tb_win
+                        JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
+                        JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
+                        where tb_undian.kat_undian = 'gold'
+                        AND tb_win.id_prize = 12
+                        ";
+            $hadiah1 = mysqli_query($koneksi, $qhadiah1);
 
-                ?>
+            $qhadiah2 = "SELECT tb_win.*,tb_undian.*,tb_prize.*
+                        FROM tb_win
+                        JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
+                        JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
+                        where tb_undian.kat_undian = 'gold'
+                        AND tb_win.id_prize = 13
+                        ";
+            $hadiah2 = mysqli_query($koneksi, $qhadiah2);
 
-                <div class="card-body">
-                    <div class="row">
-                        <div class='col-sm-12 mt-2'>
-                            <div class="card  card-pilih">
-                                <?php foreach ($hadiah as $ha) {; ?>
-                                    <div class="card-header">
-                                        <h3>Hadiah <?php echo $ha['nama_prize'] ?></h3>
-                                    </div>
-                                <?php }; ?>
-                                <?php foreach ($hasil as $h) {; ?>
-                                    <div class="body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h3 style="text-align:center ;"><?php echo $no++ ?>. <?php echo $h['nama_toko'] ?></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php }; ?>
+            $qhadiah3 = "SELECT tb_win.*,tb_undian.*,tb_prize.*
+                        FROM tb_win
+                        JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
+                        JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
+                        where tb_undian.kat_undian = 'gold'
+                        AND tb_win.id_prize = 14
+                        ";
+            $hadiah3 = mysqli_query($koneksi, $qhadiah3);
+
+            $qhadiah4 = "SELECT tb_win.*,tb_undian.*,tb_prize.*
+                        FROM tb_win
+                        JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
+                        JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
+                        where tb_undian.kat_undian = 'gold'
+                        AND tb_win.id_prize = 15
+                        ";
+            $hadiah4 = mysqli_query($koneksi, $qhadiah4);
+            ?>
+            <div class="card-body">
+                <div class="row">
+                    <div class='col-sm'>
+                        <div class="card  card-pilih">
+                            <div class="card-header">
+                                <h4>Sprayer Elektrik 16 Ltr</h4>
                             </div>
+                            <table class=" fontTb borderless">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <?php $no = 0;
+                                foreach ($hadiah as $h) {
+                                    $no++ ?>
+                                    <tbody>
+                                        <tr>
+                                            <td class="b" width="10%" style="padding-top: 10px;"><?php echo $no; ?>.</td>
+                                            <td class="b" width="60%" style="padding-top: 15px;"><?php echo $h['nama_toko'] ?></td>
+                                            <td class="c" width="60%" style="padding-top: 15px;"><?php echo $h['nomor_undian'] ?></td>
+                                        </tr>
+                                    </tbody>
+                                <?php }; ?>
+                            </table>
                         </div>
                     </div>
-                </div>
-                <div class="card-footer">
+
+                    <div class="col-sm ">
+                        <div class="card  card-pilih">
+                            <div class="card-header">
+                                <h4>HP Android</h4>
+                            </div>
+                            <table class=" fontTb borderless">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <?php $no = 0;
+                                foreach ($hadiah1 as $h) {
+                                    $no++ ?>
+                                    <tbody>
+                                        <tr>
+                                            <td class="b" width="10%" style="padding-top: 10px;"><?php echo $no; ?>.</td>
+                                            <td class="b" width="60%" style="padding-top: 15px;"><?php echo $h['nama_toko'] ?></td>
+                                            <td class="c" width="60%" style="padding-top: 15px;"><?php echo $h['nomor_undian'] ?></td>
+                                        </tr>
+                                    </tbody>
+                                <?php }; ?>
+
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-sm ">
+                        <div class="card  card-pilih">
+                            <div class="card-header">
+                                <h4>Kulkas 2 Pintu</h4>
+                            </div>
+                            <table class=" fontTb borderless">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <?php $no = 0;
+                                foreach ($hadiah2 as $h) {
+                                    $no++ ?>
+                                    <tbody>
+                                        <tr>
+                                            <td class="b" width="10%" style="padding-top: 10px;"><?php echo $no; ?>.</td>
+                                            <td class="b" width="60%" style="padding-top: 15px;"><?php echo $h['nama_toko'] ?></td>
+                                            <td class="c" width="60%" style="padding-top: 15px;"><?php echo $h['nomor_undian'] ?></td>
+                                        </tr>
+                                    </tbody>
+                                <?php }; ?>
+
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-sm ">
+                        <div class="card  card-pilih">
+                            <div class="card-header">
+                                <h4>Sepeda Listrik</h4>
+                            </div>
+                            <table class=" fontTb borderless">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <?php $no = 0;
+                                foreach ($hadiah3 as $h) {
+                                    $no++ ?>
+                                    <tbody>
+                                        <tr>
+                                            <td class="b" width="10%" style="padding-top: 10px;"><?php echo $no; ?>.</td>
+                                            <td class="b" width="60%" style="padding-top: 15px;"><?php echo $h['nama_toko'] ?></td>
+                                            <td class="c" width="60%" style="padding-top: 15px;"><?php echo $h['nomor_undian'] ?></td>
+                                        </tr>
+                                    </tbody>
+                                <?php }; ?>
+
+                            </table>
+                        </div>
+                    </div>
 
                 </div>
             </div>
+        </div>
+        </div>
+        <div class="card-footer">
+
+        </div>
         </div>
     </center>
 </body>
 
 <script type="text/javascript">
-        setTimeout(function() {
-            location = ''
-        }, 2000)
-    
+
+    $('#btnTampil').click(function() {
+        location.href = "../gold/tampil_hadiah_1.php"
+    })
+
+    window.onkeydown = function(event) {
+
+        if (event.keyCode === 221) {
+            event.preventDefault();
+            document.querySelector('#btnTampil').click();
+        }
+    }
+
+    setTimeout(function() {
+        location = ''
+    }, 1500)
 </script>
 
 </html>
