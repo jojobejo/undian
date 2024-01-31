@@ -44,10 +44,12 @@ $result    = mysqli_fetch_array($query);
             background-repeat: no-repeat;
             background-size: cover;
         }
+
         .modalCenter {
             top: 35% !important;
             transform: translateY(-50%) !important;
         }
+
         .h3Center {
             text-align: center;
         }
@@ -109,9 +111,17 @@ $result    = mysqli_fetch_array($query);
             border-style: solid;
         }
 
+        .posWinSilver {
+            position: absolute;
+            top: 620px;
+            left: 135px;
+            height: 370px;
+            width: 1620px;
+        }
+
         .posnoundi {
             position: absolute;
-            top: 450px;
+            top: 350px;
             left: 250px;
             width: 1400px;
             height: 190px;
@@ -217,6 +227,54 @@ $result    = mysqli_fetch_array($query);
             font-size: 60px;
             color: #FFE880;
         }
+
+        table {
+            border: 0px;
+        }
+
+        table.fontTb {
+            font-weight: 800;
+            font-size: 25px;
+        }
+
+        .borderless td,
+        .borderless th {
+            border: none;
+        }
+
+        td.a {
+            text-align: right;
+        }
+
+        td.b {
+            text-align: center;
+        }
+
+        td.c {
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            flex-flow: column wrap;
+            height: 130px;
+        }
+
+        .tbwin1 {
+            min-height: 10px;
+            width: 750px;
+            height: 10px;
+        }
+
+        .tbwin2 {
+            max-height: 300px;
+            max-width: 880px;
+            width: 750px;
+            height: 300px;
+            margin-left: 120px;
+        }
     </style>
 </head>
 <!-- background-repeat: no-repeat; height:auto; background-size: cover; -->
@@ -244,7 +302,7 @@ $result    = mysqli_fetch_array($query);
             <div class="card posCard1 card-pilih" hidden>
                 <div class="card-header ">
                     <h3 class="silver">UNDIAN SILVER</h2>
-                        
+
                 </div>
                 <div class="card-body">
                     <form id="frmAngka" method="post" action="index.html">
@@ -307,7 +365,7 @@ $result    = mysqli_fetch_array($query);
                     </form>
                 </div>
             </div>
-            
+
             <div class="container-x">
                 <div class="row">
                     <div class="col-sm">
@@ -332,6 +390,42 @@ $result    = mysqli_fetch_array($query);
                 <div class="card-footers">
                     <button type="button" class="btn btn-block btn-success mt-2 mb-2 mr-2" id="btnBerhenti" disabled hidden>Berhenti</button>
                 </div>
+            </div>
+            <?php
+
+            $qhadiah = "SELECT tb_win.*,tb_undian.*,tb_prize.*
+            FROM tb_win
+            JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
+            JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
+            where tb_undian.kat_undian = 'silver'
+            AND tb_win.id_prize = '$id_prize'
+                        ";
+            $hadiah = mysqli_query($koneksi, $qhadiah);
+            ?>
+            <div class="card posWinSilver">
+                <div class="card-header">
+                    <h3>Pememenang Undian</h3>
+                </div>
+                <table class="fontTb borderless tbwin1">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 0;
+                        foreach ($hadiah as $h) {
+                            $no++ ?>
+                            <tr>
+                                <td class="b" width="10%" style="padding-top: 10px;"><?php echo $no; ?>.</td>
+                                <td class="b" width="80%" style="padding-top: 15px;"><?php echo $h['nama_toko'] ?></td>
+                                <td class="c" width="10%" style="padding-top: 15px;"><?php echo $h['nomor_undian'] ?></td>
+                            </tr>
+                        <?php }; ?>
+                    </tbody>
+                </table>
             </div>
 
             <div class="modal" tabindex="-1" role="dialog" id="modalPrize">
@@ -389,7 +483,7 @@ $result    = mysqli_fetch_array($query);
         var awal = 0;
         var akhir = 9;
         var jalan = false;
-        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian.php";
+        var urlGetDataUndian = "https://10.10.10.12/undian/get-detail-undian.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
@@ -405,7 +499,7 @@ $result    = mysqli_fetch_array($query);
             location.href = "../silver/tampil_hadiah_1.php"
         })
 
-        $('#btnBackMenu').click(function(){
+        $('#btnBackMenu').click(function() {
             location.href = "../silver/index.php"
         })
 
@@ -615,7 +709,7 @@ $result    = mysqli_fetch_array($query);
         }
 
         function tmplPemenang() {
-            
+
             let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html() + $('#lblAngka4').html();
             console.log(hasil);
 
