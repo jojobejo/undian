@@ -291,7 +291,7 @@ require('../config.php');
         var awal = 0;
         var akhir = 9;
         var jalan = false;
-        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian.php";
+        var urlGetDataUndian = "https://10.10.10.13/undian/get-detail-undian.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"

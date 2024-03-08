@@ -17,7 +17,7 @@
 </head>
 <style>
     body {
-        background-image: url("images/bg.png");
+        background-image: url("images/bg-undian.jpg");
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -88,9 +88,7 @@
 
 <body>
     <div>
-        <div class="logo1"></div>
-        <div class="logo2"></div>
-        <div class="logo3"></div>
+        <!-- <div class="logo1"></div> -->
     </div>
     <div>
         <h1> Pilih Katagori Undian </h1>

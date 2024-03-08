@@ -40,7 +40,7 @@ $result    = mysqli_fetch_array($query);
 
     <style>
         body {
-            background-image: url("../images/bg.png");
+            background-image: url("../images/bg-undian.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -115,15 +115,15 @@ $result    = mysqli_fetch_array($query);
             position: absolute;
             top: 620px;
             left: 135px;
-            height: 370px;
-            width: 1620px;
+            height: max-content;
+            width: 1220px;
         }
 
         .posnoundi {
             position: absolute;
             top: 350px;
             left: 250px;
-            width: 1400px;
+            width: 1000px;
             height: 190px;
             border-radius: 50px;
             border-style: solid;
@@ -264,7 +264,6 @@ $result    = mysqli_fetch_array($query);
 
         .tbwin1 {
             min-height: 10px;
-            width: 750px;
             height: 10px;
         }
 
@@ -295,9 +294,9 @@ $result    = mysqli_fetch_array($query);
                 <a href="#" class=" btn btn-warning btn-lg" id="btnBackMenu" role="button"><i class="fa fa-home"></i> Menu</a>
             </div>
             <div class="page-header" style="margin-top:-10px;">
-                <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
+                <!-- <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
                 <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
-                <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px">
+                <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px"> -->
             </div>
             <div class="card posCard1 card-pilih" hidden>
                 <div class="card-header ">
@@ -402,7 +401,7 @@ $result    = mysqli_fetch_array($query);
                         ";
             $hadiah = mysqli_query($koneksi, $qhadiah);
             ?>
-            <div class="card posWinSilver">
+            <div class=" card posWinSilver">
                 <div class="card-header">
                     <h3>Pememenang Undian</h3>
                 </div>
@@ -419,7 +418,7 @@ $result    = mysqli_fetch_array($query);
                         foreach ($hadiah as $h) {
                             $no++ ?>
                             <tr>
-                                <td class="b" width="10%" style="padding-top: 10px;"><?php echo $no; ?>.</td>
+                                <td class="a" width="10%" style="padding-top: 10px;"><?php echo $no; ?>.</td>
                                 <td class="b" width="80%" style="padding-top: 15px;"><?php echo $h['nama_toko'] ?></td>
                                 <td class="c" width="10%" style="padding-top: 15px;"><?php echo $h['nomor_undian'] ?></td>
                             </tr>
@@ -483,7 +482,7 @@ $result    = mysqli_fetch_array($query);
         var awal = 0;
         var akhir = 9;
         var jalan = false;
-        var urlGetDataUndian = "https://10.10.10.12/undian/get-detail-undian.php";
+        var urlGetDataUndian = "https://10.10.10.13/undian/get-detail-undian.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"

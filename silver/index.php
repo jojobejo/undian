@@ -29,7 +29,7 @@ require('../config.php');
 
     <style>
         body {
-            background-image: url("../images/bg.png");
+            background-image: url("../images/bg-undian.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -205,9 +205,9 @@ require('../config.php');
                 <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i> Menu</a>
             </div>
             <div class="page-header" style="margin-top:-10px;">
-                <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
+                <!-- <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
                 <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
-                <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px">
+                <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px"> -->
             </div>
             <div class="card posCard1 card-pilih ">
                 <div class="card-header ">
