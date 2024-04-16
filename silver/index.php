@@ -97,7 +97,7 @@ require('../config.php');
         .posCard1 {
             position: absolute;
             top: 420px;
-            left: 350px;
+            left: 320px;
             width: 1200px;
             height: 500px;
             border-radius: 20px;
