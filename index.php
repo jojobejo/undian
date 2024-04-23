@@ -76,13 +76,15 @@
     }
 
     h1 {
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
         font-family: "DynaPuff", sans-serif;
         color: gold;
         position: absolute;
         font-weight: bold;
-        font-size: 60px;
+        font-size: 75px;
         top: 280px;
-        left: 370px;
+        left: 280px;
     }
 </style>
 
@@ -107,7 +109,6 @@
     </div>
 
     <script>
-        
         $('#silver').click(function() {
             location.href = "../undian/silver/index.php"
         })
@@ -121,8 +122,7 @@
             location.href = "../undian/extra/index.php"
         })
 
-        window.onkeydown = function(event)
-        {
+        window.onkeydown = function(event) {
             if (event.keyCode === 49) {
                 event.preventDefault();
                 document.querySelector('#silver').click();

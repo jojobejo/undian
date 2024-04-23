@@ -40,7 +40,7 @@ $result    = mysqli_fetch_array($query);
 
     <style>
         body {
-            background-image: url("../images/bg-undian.jpg");
+            background-image: url("../images/bg-undian-1.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -102,7 +102,7 @@ $result    = mysqli_fetch_array($query);
 
         .posCard1 {
             position: absolute;
-            top: 370px;
+            top: 350px;
             left: 350px;
             width: 100px;
             height: 100px;
@@ -113,16 +113,16 @@ $result    = mysqli_fetch_array($query);
 
         .posWinSilver {
             position: absolute;
-            top: 620px;
-            left: 135px;
+            top: 450px;
+            left: 190px;
             height: max-content;
             width: 1220px;
         }
 
         .posnoundi {
             position: absolute;
-            top: 350px;
-            left: 250px;
+            top: 220px;
+            left: 310px;
             width: 1000px;
             height: 190px;
             border-radius: 50px;
@@ -234,7 +234,7 @@ $result    = mysqli_fetch_array($query);
 
         table.fontTb {
             font-weight: 800;
-            font-size: 25px;
+            font-size: 16px;
         }
 
         .borderless td,
@@ -264,7 +264,7 @@ $result    = mysqli_fetch_array($query);
 
         .tbwin1 {
             min-height: 10px;
-            height: 10px;
+            height: 50px;
         }
 
         .tbwin2 {
@@ -482,7 +482,7 @@ $result    = mysqli_fetch_array($query);
         var awal = 0;
         var akhir = 9;
         var jalan = false;
-        var urlGetDataUndian = "http://10.10.10.13/undian/get-detail-undian.php";
+        var urlGetDataUndian = "https://10.10.10.13/undian/get-detail-undian.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"

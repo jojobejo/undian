@@ -157,15 +157,17 @@ require('../config.php');
         }
 
         .sizes {
-            height: 150px;
+            height: 200px;
             width: auto;
         }
 
         .img-thumbnail {
             background-color: transparent;
             border: none;
-            height: 200px;
+            height: 250px;
             width: auto;
+            margin-left: 30px;
+            margin-top: 50px;
         }
 
         .pemenang {
@@ -280,7 +282,7 @@ require('../config.php');
         var awal = 0;
         var akhir = 9;
         var jalan = false;
-        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian.php";
+        var urlGetDataUndian = "https://10.10.10.13/undian/get-detail-undian.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
