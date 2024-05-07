@@ -1,5 +1,13 @@
 <?php
 require('../config.php');
+
+if (isset($_GET['id'])) {
+    $id_prize    = $_GET['id'];
+} else {
+    die("Error. No ID Selected!");
+}
+include "../config.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -128,7 +136,7 @@ require('../config.php');
             left: 430px;
         }
 
-       
+
         .lblhide {
             position: absolute;
             top: 10px;
@@ -152,8 +160,8 @@ require('../config.php');
         .sizes {
             height: 120px;
             position: absolute;
-            left: -100px;
-            top: 100px;
+            left: 100px;
+            top: 300px;
         }
 
         .img-thumbnail {
@@ -189,7 +197,7 @@ require('../config.php');
 
         .mobil-img {
             position: absolute;
-            left: 25px;
+            left: 200px;
             top: 320px;
         }
     </style>
@@ -250,7 +258,9 @@ require('../config.php');
             $qprize = " SELECT tb_prize.*,tb_undian.*
                         FROM tb_prize
                         JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.id_kat_undi
-                        WHERE tb_undian.kat_undian = 'platinum'";
+                        WHERE tb_undian.kat_undian = 'platinum'
+                        AND tb_prize.id_prize = $id_prize
+                        ";
             $rprize = mysqli_query($koneksi, $qprize);
             ?>
 
@@ -260,7 +270,7 @@ require('../config.php');
                         <div class='col md-4'>
                             <div class='row'>
                                 <div class="col md-1">
-                                    <img src="../images/hadiah/<?php echo $row['img'] ?>" class="mobil-img" style="height: 500px; width: 1000px;">
+                                    <img src="../images/hadiah/<?php echo $row['img'] ?>" class="mobil-img" style="height: 470px; width: 800px;">
                                     <p id="result_prize" hidden><?php echo $row['nama_prize'] ?></p>
                                 </div>
                             </div>

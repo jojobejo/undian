@@ -1,6 +1,6 @@
 <?php
     // konfigurasi db
-    $host = '10.10.10.13';
+    $host = 'localhost';
     $user = 'root';
     $pass = '';
     $db   = 'extravaganza_undian';

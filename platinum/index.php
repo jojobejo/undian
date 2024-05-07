@@ -159,14 +159,27 @@ require('../config.php');
         .sizes {
             height: 150px;
             position: absolute;
-            left: -100px;
-            top: 10px;
+            left: 300px;
+            top: 200px;
+        }
+
+        .sizes1 {
+            height: 150px;
+            position: absolute;
+            left: 700px;
+            top: 250px;
         }
 
         .img-thumbnail {
             background-color: transparent;
             border: none;
             height: 250px;
+            width: 150px;
+        }
+        .img-thumbnail1 {
+            background-color: transparent;
+            border: none;
+            height: 150px;
             width: 150px;
         }
 
@@ -206,33 +219,35 @@ require('../config.php');
             <div class="home" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i> Menu</a>
             </div>
-            <div class="page-header" style="margin-top:-10px;">
-                <!-- <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
-                <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
-                <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px"> -->
-            </div>
-            <div class="card posCard1 card-pilih ">
-                <div class="card-header ">
-                    <h3>PILIH HADIAH UNDIAN</h3>
-                </div>
-
-                <div class="card-body ">
-                    <?php
-                    $qprize = " SELECT tb_prize.*,tb_undian.*
+            <div class="card-body ">
+                <?php
+                $qprize = " SELECT tb_prize.*,tb_undian.*
                         FROM tb_prize
                         JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.id_kat_undi
-                        WHERE tb_undian.kat_undian = 'platinum' ";
-                    $rprize = mysqli_query($koneksi, $qprize);
-                    ?>
-                    <div class="row ml-3">
-                        <?php while ($row = mysqli_fetch_array($rprize)) :; ?>
-                            <a href="../platinum/undian_platinum.php?id=<?php echo $row['id_prize'] ?>"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail sizes" style="height: 350px; width: 600px;"></a>
-                    </div>
-                <?php endwhile; ?>
-                </div>
-                <div class="card-footer">
+                        WHERE tb_undian.kat_undian = 'platinum'
+                        AND tb_prize.nama_prize = 'City Car Off The Road' ";
+                $rprize = mysqli_query($koneksi, $qprize);
 
+                $qprize1 = " SELECT tb_prize.*,tb_undian.*
+                        FROM tb_prize
+                        JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.id_kat_undi
+                        WHERE tb_undian.kat_undian = 'platinum' 
+                        AND tb_prize.nama_prize = 'Sepeda Motor Honda PCX'
+                        ";
+                $rprize1 = mysqli_query($koneksi, $qprize1);
+
+                ?>
+                <div class="row ml-3">
+                    <?php while ($row = mysqli_fetch_array($rprize)) :; ?>
+                        <a href="../platinum/undian_platinum_mobil.php?id=<?php echo $row['id_prize'] ?>"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail sizes" style="height: 450px; width: 650px;"></a>
                 </div>
+            <?php endwhile; ?>
+            <div class="row ml-3">
+                <?php while ($row = mysqli_fetch_array($rprize1)) :; ?>
+                    <a href="../platinum/undian_platinum_motor.php?id=<?php echo $row['id_prize'] ?>"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail1 sizes1" style="height: 400px; width: 600px;"></a>
+            </div>
+        <?php endwhile; ?>
+
             </div>
         </center>
     </div>

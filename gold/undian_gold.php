@@ -38,7 +38,7 @@ $result    = mysqli_fetch_array($query);
 
     <style>
         body {
-            background-image: url("../images/bg.png");
+            background-image: url("../images/bg-undian.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -46,11 +46,6 @@ $result    = mysqli_fetch_array($query);
         .modalCenter {
             top: 35% !important;
             transform: translateY(-50%) !important;
-        }
-
-        .silver {
-            font-family: 'Lobstertwo', sans-serif;
-            font-size: 60px;
         }
 
         .h3Center {
@@ -105,20 +100,28 @@ $result    = mysqli_fetch_array($query);
 
         .posCard1 {
             position: absolute;
-            top: 680px;
+            top: 350px;
             left: 350px;
-            width: 1200px;
-            height: 320px;
+            width: 100px;
+            height: 100px;
             border-radius: 20px;
             border: black;
             border-style: solid;
         }
 
+        .posWinSilver {
+            position: absolute;
+            top: 500px;
+            left: 240px;
+            height: max-content;
+            width: 1220px;
+        }
+
         .posnoundi {
             position: absolute;
-            top: 390px;
-            left: 250px;
-            width: 1400px;
+            top: 250px;
+            left: 350px;
+            width: 1000px;
             height: 190px;
             border-radius: 50px;
             border-style: solid;
@@ -166,7 +169,7 @@ $result    = mysqli_fetch_array($query);
         }
 
         .sizes {
-            height: 150px;
+            height: 200px;
             width: auto;
         }
 
@@ -187,11 +190,87 @@ $result    = mysqli_fetch_array($query);
             top: 10px;
         }
 
+        .btnMulaiUndi {
+            position: absolute;
+            top: 100px;
+        }
+
+        .btn-primary,
+        .btn-primary:hover,
+        .btn-primary:active,
+        .btn-primary:visited {
+            height: 50px;
+            width: 500px;
+            background-color: green;
+        }
+
         .btn-warning,
         .btn-warning:hover,
         .btn-warning:active,
         .btn-warning:visited {
             background-color: linear-gradient(#FFE880, #B59451, #966D2F) !important;
+        }
+
+        .container-x {
+            position: absolute;
+            top: 365px;
+            left: 800px;
+            width: 200px;
+            height: 100px;
+            inline-size: auto;
+        }
+
+        .txtHadiah {
+            font-family: 'Lobstertwo', sans-serif;
+            font-size: 60px;
+            color: #FFE880;
+        }
+
+        table {
+            border: 0px;
+        }
+
+        table.fontTb {
+            font-weight: 800;
+            font-size: 16px;
+        }
+
+        .borderless td,
+        .borderless th {
+            border: none;
+        }
+
+        td.a {
+            text-align: right;
+        }
+
+        td.b {
+            text-align: center;
+        }
+
+        td.c {
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            flex-flow: column wrap;
+            height: 130px;
+        }
+
+        .tbwin1 {
+            min-height: 10px;
+            height: 50px;
+        }
+
+        .tbwin2 {
+            max-height: 300px;
+            max-width: 880px;
+            width: 750px;
+            height: 300px;
+            margin-left: 120px;
         }
     </style>
 </head>
@@ -212,15 +291,10 @@ $result    = mysqli_fetch_array($query);
             <div class="menu" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnBackMenu" role="button"><i class="fa fa-home"></i> Menu</a>
             </div>
-            <div class="page-header" style="margin-top:-10px;">
-                <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
-                <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
-                <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px">
-            </div>
             <div class="card posCard1 card-pilih" hidden>
                 <div class="card-header ">
                     <h3 class="silver">UNDIAN GOLD</h2>
-                        
+
                 </div>
                 <div class="card-body">
                     <form id="frmAngka" method="post" action="index.html">
@@ -252,11 +326,11 @@ $result    = mysqli_fetch_array($query);
                             <label for="txtAwal1" hidden>Angka awal</label>
                             <input type="hidden" class="form-control" id="txtAwal3" placeholder="Angka awal3" min="1" value="0">
                         </div>
-                    
+
                     </form>
                 </div>
             </div>
-            
+
             <div class="container-x">
                 <div class="row">
                     <div class="col-sm">
@@ -279,6 +353,42 @@ $result    = mysqli_fetch_array($query);
                 <div class="card-footers">
                     <button type="button" class="btn btn-block btn-success mt-2 mb-2 mr-2" id="btnBerhenti" disabled hidden>Berhenti</button>
                 </div>
+            </div>
+            <?php
+
+            $qhadiah = "SELECT tb_win.*,tb_undian.*,tb_prize.*
+FROM tb_win
+JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
+JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
+where tb_undian.kat_undian = 'gold'
+AND tb_win.id_prize = '$id_prize'
+            ";
+            $hadiah = mysqli_query($koneksi, $qhadiah);
+            ?>
+            <div class=" card posWinSilver">
+                <div class="card-header">
+                    <h3>Pememenang Undian - <?= $result['nama_prize'] ?></h3>
+                </div>
+                <table class="fontTb borderless tbwin1">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 0;
+                        foreach ($hadiah as $h) {
+                            $no++ ?>
+                            <tr>
+                                <td class="a" width="10%" style="padding-top: 10px;"><?php echo $no; ?>.</td>
+                                <td class="b" width="80%" style="padding-top: 15px;"><?php echo $h['nama_toko'] ?></td>
+                                <td class="c" width="10%" style="padding-top: 15px;"><?php echo $h['nomor_undian'] ?></td>
+                            </tr>
+                        <?php }; ?>
+                    </tbody>
+                </table>
             </div>
 
             <div class="modal" tabindex="-1" role="dialog" id="modalPrize">
@@ -321,14 +431,14 @@ $result    = mysqli_fetch_array($query);
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian-gold.php";
+        var urlGetDataUndian = "https://10.10.10.12/undian/get-detail-undian-gold.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
         })
 
         $('#btnTampil').click(function() {
-            location.href = "../gold/tampil_hadiah.php?id=<?= $result['id_prize']?>"
+            location.href = "../gold/tampil_hadiah.php?id=<?= $result['id_prize'] ?>"
         })
         $('#btnTampil_1').click(function() {
             location.href = "../gold/tampil_hadiah_1.php"
@@ -383,7 +493,8 @@ $result    = mysqli_fetch_array($query);
                 event.preventDefault();
                 document.querySelector('#btnAcak').click();
 
-            }  if (event.keyCode === 72) {
+            }
+            if (event.keyCode === 72) {
                 event.preventDefault();
                 document.querySelector('#btnBackMenu').click();
             }
@@ -467,33 +578,23 @@ $result    = mysqli_fetch_array($query);
                     jalan = true;
                     jalan1 = true;
                     jalan2 = true;
-                } 
-                else if(hasil == 123)
-                {
+                } else if (hasil == 123) {
                     jalan = true;
                     jalan1 = true;
                     jalan2 = true;
-                }
-                else if(hasil == 321)
-                {
+                } else if (hasil == 321) {
                     jalan = true;
                     jalan1 = true;
                     jalan2 = true;
-                }
-                else if(hasil == 741)
-                {
+                } else if (hasil == 741) {
                     jalan = true;
                     jalan1 = true;
                     jalan2 = true;
-                }
-                else if(hasil == 0)
-                {
+                } else if (hasil == 0) {
                     jalan = true;
                     jalan1 = true;
                     jalan2 = true;
-                }
-               
-                else {
+                } else {
                     jalan = false;
                     jalan1 = false;
                     jalan2 = false;
@@ -502,7 +603,7 @@ $result    = mysqli_fetch_array($query);
             }, 5)
 
             console.log(getundi)
-            setTimeout('tmplPemenang()',300);
+            setTimeout('tmplPemenang()', 300);
 
         });
 
@@ -529,7 +630,7 @@ $result    = mysqli_fetch_array($query);
         }
 
         function ubahAngkaAcak() {
-            if (jalan == true || jalan1 == true || jalan2 == true ) {
+            if (jalan == true || jalan1 == true || jalan2 == true) {
                 document.getElementById("lblAngka").value = $('#lblAngka');
                 document.getElementById("lblAngka1").value = $('#lblAngka1');
                 document.getElementById("lblAngka2").value = $('#lblAngka2');

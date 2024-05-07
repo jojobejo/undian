@@ -57,21 +57,21 @@
     .menuSilver {
         position: absolute;
         top: 400px;
-        left: 250px;
+        left: 400px;
 
     }
 
     .menuGold {
         position: absolute;
         top: 400px;
-        left: 550px;
+        left: 700px;
 
     }
 
     .menuPlatinum {
         position: absolute;
         top: 400px;
-        left: 850px;
+        left: 1000px;
 
     }
 
@@ -83,8 +83,8 @@
         position: absolute;
         font-weight: bold;
         font-size: 75px;
-        top: 280px;
-        left: 280px;
+        top: 220px;
+        left: 450px;
     }
 </style>
 

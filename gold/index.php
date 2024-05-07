@@ -29,7 +29,7 @@ require('../config.php');
 
     <style>
         body {
-            background-image: url("../images/bg.png");
+            background-image: url("../images/bg-undian.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -96,10 +96,10 @@ require('../config.php');
 
         .posCard1 {
             position: absolute;
-            top: 420px;
-            left: 350px;
+            top: 300px;
+            left: 250px;
             width: 1200px;
-            height: 300px;
+            height: 400px;
             border-radius: 20px;
             border: black;
             border-style: solid;
@@ -191,18 +191,6 @@ require('../config.php');
             height: 150px;
             width: 150px;
         }
-
-        .posHadiah {
-            position: absolute;
-            margin-left: -50px;
-            margin-top: 10px;
-        }
-        .grand_gold{
-            position: absolute;
-            top: 300px;
-            left: 500px;
-            
-        }
     </style>
 </head>
 <!-- background-repeat: no-repeat; height:auto; background-size: cover; -->
@@ -219,11 +207,7 @@ require('../config.php');
             <div class="home" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i> Menu</a>
             </div>
-            <div class="page-header" style="margin-top:-10px;">
-                <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
-                <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
-                <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px">
-            </div>
+
             <div class="card posCard1 card-pilih ">
                 <div class="card-header ">
                     <h3>PILIH HADIAH UNDIAN</h3>
@@ -237,16 +221,13 @@ require('../config.php');
                 $rprize1 = mysqli_query($koneksi, $qprizesilver);
                 ?>
 
-                <div class="row ml-5">
+                <div class="row ml-2">
                     <?php while ($row = mysqli_fetch_array($rprize1)) :; ?>
-                        <div class="col-md-2 ml-5 ">
+                        <div class="col mt-5">
                             <a href="../gold/undian_gold.php?id=<?php echo $row['id_prize'] ?>"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail sizes posHadiah"></a>
                         </div>
 
                     <?php endwhile; ?>
-                </div>
-                <div class="grand_gold">
-                    <a href="../gold/undian_motor.php"><img>Grand Prize Motor</a>
                 </div>
             </div>
             <div class="card-footer">
