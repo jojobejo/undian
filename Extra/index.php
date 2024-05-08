@@ -28,7 +28,7 @@ require('../config.php');
 
     <style>
         body {
-            background-image: url("../images/bg.png");
+            background-image: url("../images/bg-undian.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -104,16 +104,7 @@ require('../config.php');
             border-style: solid;
         }
 
-        .posnoundi {
-            position: absolute;
-            top: 670px;
-            left: 250px;
-            width: 1400px;
-            height: 190px;
-            border-radius: 50px;
-            border-style: solid;
-            border: black;
-        }
+
 
         .poswin1 {
             position: absolute;
@@ -186,8 +177,19 @@ require('../config.php');
 
         .mobil-img {
             position: absolute;
-            left: 2px;
-            top: 230px;
+            left: 350px;
+            top: 190px;
+        }
+
+        .posnoundi {
+            position: absolute;
+            top: 500px;
+            left: 250px;
+            width: 1200px;
+            height: 180px;
+            border-radius: 50px;
+            border-style: solid;
+            border: black;
         }
 
         .confetti {
@@ -365,11 +367,6 @@ require('../config.php');
             <div class="home" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i> Menu</a>
             </div>
-            <div class="page-header" style="margin-top:-10px;">
-                <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
-                <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
-                <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px">
-            </div>
             <div class="card posCard1 card-pilih" hidden>
                 <div class="card-header" hidden>
                     <h2 class="silver">UNDIAN Extra Motor</h2>
@@ -422,7 +419,7 @@ require('../config.php');
                         <div class='col md-4'>
                             <div class='row'>
                                 <div class="col md-1">
-                                    <img src="../images/hadiah/<?php echo $row['img'] ?>" class="mobil-img" style="height: 550px; width: 1000px;">
+                                    <img src="../images/hadiah/<?php echo $row['img'] ?>" class="mobil-img" style="height: 350px; width: 400px;">
                                     <p id="result_prize" hidden><?php echo $row['nama_prize'] ?></p>
                                 </div>
                             </div>
@@ -444,7 +441,7 @@ require('../config.php');
 
             <div class="modal" tabindex="-1" role="dialog" id="modalPrize">
 
-                 <div class="confetti">
+                <div class="confetti">
                     <div class="confetti-piece"></div>
                     <div class="confetti-piece"></div>
                     <div class="confetti-piece"></div>
@@ -499,7 +496,7 @@ require('../config.php');
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "https://192.168.10.88/undian/get-detail-undian-platinum.php";
+        var urlGetDataUndian = "https://10.10.10.12/undian/get-detail-undian-extra.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"

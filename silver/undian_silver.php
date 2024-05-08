@@ -40,7 +40,7 @@ $result    = mysqli_fetch_array($query);
 
     <style>
         body {
-            background-image: url("../images/bg-undian-1.jpg");
+            background-image: url("../images/bg-undian.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -403,7 +403,7 @@ $result    = mysqli_fetch_array($query);
             ?>
             <div class=" card posWinSilver">
                 <div class="card-header">
-                    <h3>Pememenang Undian</h3>
+                    <h3>Pememenang Undian - <?= $result['nama_prize'] ?></h3>
                 </div>
                 <table class="fontTb borderless tbwin1">
                     <thead>

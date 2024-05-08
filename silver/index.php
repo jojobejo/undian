@@ -96,10 +96,10 @@ require('../config.php');
 
         .posCard1 {
             position: absolute;
-            top: 420px;
-            left: 320px;
+            top: 270px;
+            left: 250px;
             width: 1200px;
-            height: 500px;
+            height: 400px;
             border-radius: 20px;
             border: black;
             border-style: solid;
@@ -107,10 +107,10 @@ require('../config.php');
 
         .posnoundi {
             position: absolute;
-            top: 390px;
-            left: 250px;
+            top: 300px;
+            left: 200px;
             width: 1400px;
-            height: 190px;
+            height: 150px;
             border-radius: 50px;
             border-style: solid;
             border: black;
@@ -157,16 +157,15 @@ require('../config.php');
         }
 
         .sizes {
-            height: 200px;
+            height: 150px;
             width: auto;
         }
 
         .img-thumbnail {
             background-color: transparent;
             border: none;
-            height: 250px;
+            height: 200px;
             width: auto;
-            margin-left: 30px;
             margin-top: 50px;
         }
 
@@ -206,36 +205,22 @@ require('../config.php');
             <div class="home" hidden>
                 <a href="#" class=" btn btn-warning btn-lg" id="btnHome" role="button"><i class="fa fa-home"></i> Menu</a>
             </div>
-            <div class="page-header" style="margin-top:-10px;">
-                <!-- <img src="../images/karisma.png" alt="" class="logo1" height="200px" width="500px">
-                <img src="../images/extra.png" alt="" class="logo2" height="470px" width="1300px">
-                <img src="../images/2022.png" alt="" class="logo3" height="150px" width="300px"> -->
-            </div>
             <div class="card posCard1 card-pilih ">
                 <div class="card-header ">
                     <h3>PILIH HADIAH UNDIAN</h3>
                 </div>
-
                 <div class="card-body ">
                     <?php
                     $qprize = " SELECT tb_prize.*,tb_undian.*
                         FROM tb_prize
                         JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.id_kat_undi
-                        WHERE tb_undian.kat_undian = 'silver' ";
+                        WHERE tb_prize.id_kat_undi = '1' ";
                     $rprize = mysqli_query($koneksi, $qprize);
                     ?>
-
-                    <?php
-                    $qprizesilver = " SELECT tb_prize.*,tb_undian.*
-                        FROM tb_prize
-                        JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.id_kat_undi
-                        WHERE tb_undian.kat_undian = 'silver_2' ";
-                    $rprize1 = mysqli_query($koneksi, $qprizesilver);
-                    ?>
-                    <div class="row ml-3">
+                    <div class="row">
                         <?php while ($row = mysqli_fetch_array($rprize)) :; ?>
-                            <div class="col-md-2 ml-4">
-                                <a href="../silver/undian_silver.php?id=<?php echo $row['id_prize']?>"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail sizes"></a>
+                            <div class="col">
+                                <a href="../silver/undian_silver.php?id=<?php echo $row['id_prize'] ?>"> <img src="../images/hadiah/silver/<?php echo $row['img'] ?>" class="img-thumbnail sizes"></a>
                             </div>
                         <?php endwhile; ?>
                     </div>
@@ -461,7 +446,7 @@ require('../config.php');
                 let angka3 = angkaAcak3();
                 let angka4 = angkaAcak4();
 
-                
+
 
                 $("#lblAngka").text(angka);
                 $("#lblAngka1").text(angka1);

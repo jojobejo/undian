@@ -122,6 +122,13 @@
             location.href = "../undian/extra/index.php"
         })
 
+        // KEYCODE -> Shortcut Tombol
+        // 49 = 1 (Silver)
+        // 50 = 2 (Gold)
+        // 51 = 3 (Platinum)
+        // 52 = 4 (Pengunci/Extra)
+        
+
         window.onkeydown = function(event) {
             if (event.keyCode === 49) {
                 event.preventDefault();
