@@ -457,7 +457,7 @@ AND tb_win.id_prize = '$id_prize'
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
-                        location.reload();
+                        
                     }
                 });
             })
