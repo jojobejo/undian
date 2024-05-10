@@ -270,7 +270,7 @@ include "../config.php";
                         <div class='col md-4'>
                             <div class='row'>
                                 <div class="col md-1">
-                                    <img src="../images/hadiah/ <?php echo $row['img'] ?>" class="mobil-img" style="height: 500px; width: 800px;">
+                                    <img src="../images/hadiah/<?php echo $row['img'] ?>" class="mobil-img" style="height: 500px; width: 800px;">
                                     <p id="result_prize" hidden><?php echo $row['id_prize'] ?></p>
                                 </div>
                             </div>
