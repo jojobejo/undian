@@ -119,7 +119,7 @@
             location.href = "../undian/platinum/index.php"
         })
         $('#extra').click(function() {
-            location.href = "../undian/extra/index.php"
+            location.href = "../undian/Extra/index.php"
         })
 
         // KEYCODE -> Shortcut Tombol

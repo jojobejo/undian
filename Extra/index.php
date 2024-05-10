@@ -496,7 +496,7 @@ require('../config.php');
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "https://10.10.10.12/undian/get-detail-undian-extra.php";
+        var urlGetDataUndian = "https://kiu.co.id/undian/get-detail-undian-extra.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
