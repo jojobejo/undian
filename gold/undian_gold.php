@@ -431,7 +431,8 @@ AND tb_win.id_prize = '$id_prize'
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "https://10.10.10.12/undian/get-detail-undian-gold.php";
+        var urlGetDataUndian = "https://kiu.co.id/undian/get-detail-undian-gold.php";
+        
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
@@ -452,7 +453,7 @@ AND tb_win.id_prize = '$id_prize'
             $("#formWin").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: '../saveWinGold.php',
+                    url: 'https://kiu.co.id/undian/saveWinGold.php',
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
