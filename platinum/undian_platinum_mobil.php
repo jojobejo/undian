@@ -260,7 +260,7 @@ include "../config.php";
             JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.id_kat_undi
             WHERE tb_undian.kat_undian = 'platinum'
             AND tb_prize.id_prize = $id_prize ";
-            
+
             $rprize = mysqli_query($koneksi, $qprize);
             ?>
 
@@ -270,7 +270,7 @@ include "../config.php";
                         <div class='col md-4'>
                             <div class='row'>
                                 <div class="col md-1">
-                                    <img src="../images/hadiah/ echo $row['img'] ?>" class="mobil-img" style="height: 500px; width: 800px;">
+                                    <img src="../images/hadiah/ <?php echo $row['img'] ?>" class="mobil-img" style="height: 500px; width: 800px;">
                                     <p id="result_prize" hidden><?php echo $row['id_prize'] ?></p>
                                 </div>
                             </div>
