@@ -506,11 +506,11 @@ $result    = mysqli_fetch_array($query);
             $("#formWin").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: 'https://kiu.co.id/undian/saveWinSilver.php',
+                    url: 'https://kiu.co.id/undian/save-win-silver.php',
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
-                        
+                        location.reload();
                     }
                 });
             })
