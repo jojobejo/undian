@@ -259,7 +259,7 @@ include "../config.php";
                         FROM tb_prize
                         JOIN tb_undian ON tb_undian.id_kat_undi = tb_prize.id_kat_undi
                         WHERE tb_undian.kat_undian = 'platinum'
-                        AND tb_prize.id_prize = $id_prize
+                        AND tb_prize.hadiah = $id_prize
                         ";
             $rprize = mysqli_query($koneksi, $qprize);
             ?>
@@ -330,7 +330,7 @@ include "../config.php";
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "https://10.10.10.12/undian/get-detail-undian-platinum.php";
+        var urlGetDataUndian = "https://kiu.co.id/undian/get-detail-undian-platinum.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
@@ -343,7 +343,7 @@ include "../config.php";
             $("#formWin").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: '../saveWinPlatinum.php',
+                    url: 'https://kiu.co.id/undian/saveWinPlatinum.php',
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
