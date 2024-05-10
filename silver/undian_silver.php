@@ -510,7 +510,7 @@ $result    = mysqli_fetch_array($query);
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
-                        location.reload();
+                        
                     }
                 });
             })
