@@ -395,9 +395,9 @@ $result    = mysqli_fetch_array($query);
             $qhadiah = "SELECT tb_win.*,tb_undian.*,tb_prize.*
             FROM tb_win
             JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
-            JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
+            JOIN tb_prize ON tb_win.hadiah = tb_prize.id_prize
             where tb_undian.kat_undian = 'silver'
-            AND tb_win.id_prize = '$id_prize'
+            AND tb_win.hadiah = '$id_prize'
                         ";
             $hadiah = mysqli_query($koneksi, $qhadiah);
             ?>
@@ -510,7 +510,7 @@ $result    = mysqli_fetch_array($query);
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
-                        
+                        location.reload();
                     }
                 });
             })
