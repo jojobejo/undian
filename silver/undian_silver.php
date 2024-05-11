@@ -583,6 +583,12 @@ $result    = mysqli_fetch_array($query);
                 $("#lblAngka2").text(angkaAcak2());
                 $("#lblAngka3").text(angkaAcak3());
 
+                count = 11;
+
+                jalan = true;
+                jalan1 = true;
+                jalan2 = true;
+
                 jalan = true;
                 setTimeout('ubahAngkaAcak()', 5);
 
@@ -593,22 +599,91 @@ $result    = mysqli_fetch_array($query);
 
         $('#btnBerhenti').click(function() {
 
-            var getundi = setInterval(function() {
+            count--;
+            let hasil4 = $('#lblAngka3').html();
+            let hasil3 = $('#lblAngka2').html();
+            let hasil2 = $('#lblAngka1').html();
+            let hasil1 = $('#lblAngka').html();
 
-                let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html();
+            let hasil = $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html();
 
-                if (hasil > 1710) {
+            switch (count) {
+                case 10:
                     jalan = true;
                     jalan1 = true;
-                    jalan2 = true;
-                } else {
-                    jalan = false;
+                    jalan2 = false
+                    break;
+                case 9:
+                    jalan = true;
                     jalan1 = false;
                     jalan2 = false;
-                }
-            }, 50)
-
-            setTimeout('tmplPemenang()', 50);
+                    break;
+                case 8:
+                    if (hasil > 710 && hasil1 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 7:
+                    if (hasil > 710 && hasil1 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 6:
+                    if (hasil > 710 && hasil1 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 5:
+                    if (hasil > 710 && hasil1 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 4:
+                    if (hasil > 710 && hasil1 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 3:
+                    if (hasil > 710 && hasil1 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 2:
+                    if (hasil > 710 && hasil1 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 1:
+                    if (hasil > 710 && hasil1 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+            }
+            return false;
         });
 
         $('#btnReset').click(function() {
