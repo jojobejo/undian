@@ -588,6 +588,7 @@ $result    = mysqli_fetch_array($query);
                 jalan = true;
                 jalan1 = true;
                 jalan2 = true;
+                jalan3 = true;
 
                 jalan = true;
                 setTimeout('ubahAngkaAcak()', 5);
@@ -611,80 +612,140 @@ $result    = mysqli_fetch_array($query);
                 case 10:
                     if (hasil > 710 && hasil1 == 1) {
                         jalan = true;
+                        jalan1 = true;
+                        jalan2 = true;
+                        jalan3 = true;
                     } else {
                         jalan = false;
+                        jalan1 = false;
+                        jalan2 = false;
+                        jalan3 = false;
                         setTimeout('tmplPemenang()', 1000);
                     }
                     break;
                 case 9:
                     if (hasil > 710 && hasil1 == 1) {
                         jalan = true;
+                        jalan1 = true;
+                        jalan2 = true;
+                        jalan3 = true;
                     } else {
                         jalan = false;
+                        jalan1 = false;
+                        jalan2 = false;
+                        jalan3 = false;
                         setTimeout('tmplPemenang()', 1000);
                     }
                     break;
                 case 8:
                     if (hasil > 710 && hasil1 == 1) {
                         jalan = true;
+                        jalan1 = true;
+                        jalan2 = true;
+                        jalan3 = true;
                     } else {
                         jalan = false;
+                        jalan1 = false;
+                        jalan2 = false;
+                        jalan3 = false;
                         setTimeout('tmplPemenang()', 1000);
                     }
                     break;
                 case 7:
                     if (hasil > 710 && hasil1 == 1) {
                         jalan = true;
+                        jalan1 = true;
+                        jalan2 = true;
+                        jalan3 = true;
                     } else {
                         jalan = false;
+                        jalan1 = false;
+                        jalan2 = false;
+                        jalan3 = false;
                         setTimeout('tmplPemenang()', 1000);
                     }
                     break;
                 case 6:
                     if (hasil > 710 && hasil1 == 1) {
                         jalan = true;
+                        jalan1 = true;
+                        jalan2 = true;
+                        jalan3 = true;
                     } else {
                         jalan = false;
+                        jalan1 = false;
+                        jalan2 = false;
+                        jalan3 = false;
                         setTimeout('tmplPemenang()', 1000);
                     }
                     break;
                 case 5:
                     if (hasil > 710 && hasil1 == 1) {
                         jalan = true;
+                        jalan1 = true;
+                        jalan2 = true;
+                        jalan3 = true;
                     } else {
                         jalan = false;
+                        jalan1 = false;
+                        jalan2 = false;
+                        jalan3 = false;
                         setTimeout('tmplPemenang()', 1000);
                     }
                     break;
                 case 4:
                     if (hasil > 710 && hasil1 == 1) {
                         jalan = true;
+                        jalan1 = true;
+                        jalan2 = true;
+                        jalan3 = true;
                     } else {
                         jalan = false;
+                        jalan1 = false;
+                        jalan2 = false;
+                        jalan3 = false;
                         setTimeout('tmplPemenang()', 1000);
                     }
                     break;
                 case 3:
                     if (hasil > 710 && hasil1 == 1) {
                         jalan = true;
+                        jalan1 = true;
+                        jalan2 = true;
+                        jalan3 = true;
                     } else {
                         jalan = false;
+                        jalan1 = false;
+                        jalan2 = false;
+                        jalan3 = false;
                         setTimeout('tmplPemenang()', 1000);
                     }
                     break;
                 case 2:
                     if (hasil > 710 && hasil1 == 1) {
                         jalan = true;
+                        jalan1 = true;
+                        jalan2 = true;
+                        jalan3 = true;
                     } else {
                         jalan = false;
+                        jalan1 = false;
+                        jalan2 = false;
+                        jalan3 = false;
                         setTimeout('tmplPemenang()', 1000);
                     }
                     break;
                 case 1:
                     if (hasil > 710 && hasil1 == 1) {
                         jalan = true;
+                        jalan1 = true;
+                        jalan2 = true;
+                        jalan3 = true;
                     } else {
                         jalan = false;
+                        jalan1 = false;
+                        jalan2 = false;
+                        jalan3 = false;
                         setTimeout('tmplPemenang()', 1000);
                     }
                     break;
