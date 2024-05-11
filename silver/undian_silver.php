@@ -609,14 +609,20 @@ $result    = mysqli_fetch_array($query);
 
             switch (count) {
                 case 10:
-                    jalan = true;
-                    jalan1 = true;
-                    jalan2 = false
+                    if (hasil > 710 && hasil1 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
                     break;
                 case 9:
-                    jalan = true;
-                    jalan1 = false;
-                    jalan2 = false;
+                    if (hasil > 710 && hasil1 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
                     break;
                 case 8:
                     if (hasil > 710 && hasil1 == 1) {
