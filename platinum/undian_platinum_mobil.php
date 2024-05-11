@@ -227,7 +227,7 @@ include "../config.php";
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAkhir" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="2">
+                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="1">
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAwal1" hidden>Angka awal</label>
@@ -452,7 +452,7 @@ include "../config.php";
                     jalan2 = false;
                     break;
                 case 8:
-                    if (hasil1 == 2) {
+                    if (hasil > 37 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -460,7 +460,7 @@ include "../config.php";
                     }
                     break;
                 case 7:
-                    if (hasil1 == 2) {
+                    if (hasil > 37 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -468,7 +468,7 @@ include "../config.php";
                     }
                     break;
                 case 6:
-                    if (hasil1 == 2) {
+                    if (hasil > 37 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -476,7 +476,7 @@ include "../config.php";
                     }
                     break;
                 case 5:
-                    if (hasil1 == 2) {
+                    if (hasil > 37 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -484,7 +484,7 @@ include "../config.php";
                     }
                     break;
                 case 4:
-                    if (hasil1 == 2) {
+                    if (hasil > 37 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -492,7 +492,7 @@ include "../config.php";
                     }
                     break;
                 case 3:
-                    if (hasil1 == 2) {
+                    if (hasil > 37 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -500,7 +500,7 @@ include "../config.php";
                     }
                     break;
                 case 2:
-                    if (hasil1 == 2) {
+                    if (hasil > 37 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -508,7 +508,7 @@ include "../config.php";
                     }
                     break;
                 case 1:
-                    if (hasil1 == 2) {
+                    if (hasil > 37 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
