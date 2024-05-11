@@ -379,7 +379,7 @@ require('../config.php');
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAkhir" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="2">
+                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="1">
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAwal1" hidden>Angka awal</label>
@@ -581,7 +581,7 @@ require('../config.php');
                 $("#lblAngka1").text(angkaAcak1());
                 $("#lblAngka2").text(angkaAcak2());
 
-                count = 4;
+                count = 11;
 
                 jalan = true;
                 jalan1 = true;
@@ -600,31 +600,86 @@ require('../config.php');
         $('#btnBerhenti').click(function() {
 
             count--;
-            let hasil1 = $('#lblAngka1').html();
-            let hasil2 = $('#lblAngka').html();
+            let hasil1 = $('#lblAngka2').html();
+            let hasil2 = $('#lblAngka1').html();
+            let hasil3 = $('#lblAngka').html();
+
+            let hasil = $('#lblAngka1').html() + $('#lblAngka2').html();
 
             switch (count) {
-                case 3:
+                case 10:
                     jalan = true;
                     jalan1 = true;
                     jalan2 = false
                     break;
-                case 2:
+                case 9:
                     jalan = true;
-                    if (hasil1 > 9) {
-                        jalan1 = true;
-                    } else {
-                        jalan1 = false;
-                    }
-                    jalan2 = false;
-
-                    break;
-                case 1:
-
-                    jalan = false;
                     jalan1 = false;
                     jalan2 = false;
-                    setTimeout('tmplPemenang()', 500);
+                    break;
+                case 8:
+                    if (hasil3 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 7:
+                    if (hasil3 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 6:
+                    if (hasil3 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 5:
+                    if (hasil3 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 4:
+                    if (hasil3 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 3:
+                    if (hasil3 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 2:
+                    if (hasil3 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
+                    break;
+                case 1:
+                    if (hasil3 == 1) {
+                        jalan = true;
+                    } else {
+                        jalan = false;
+                        setTimeout('tmplPemenang()', 1000);
+                    }
                     break;
             }
             return false;

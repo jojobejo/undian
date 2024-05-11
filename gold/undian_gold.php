@@ -304,7 +304,7 @@ $result    = mysqli_fetch_array($query);
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAkhir" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="7">
+                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="3">
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAwal1" hidden>Angka awal</label>
@@ -432,7 +432,7 @@ AND tb_win.hadiah = '$id_prize'
         var jalan = false;
 
         var urlGetDataUndian = "https://kiu.co.id/undian/get-detail-undian-gold.php";
-        
+
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
@@ -575,19 +575,7 @@ AND tb_win.hadiah = '$id_prize'
 
                 let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html();
 
-                if (hasil > 708) {
-                    jalan = true;
-                    jalan1 = true;
-                    jalan2 = true;
-                } else if (hasil == 123) {
-                    jalan = true;
-                    jalan1 = true;
-                    jalan2 = true;
-                } else if (hasil == 321) {
-                    jalan = true;
-                    jalan1 = true;
-                    jalan2 = true;
-                } else if (hasil == 741) {
+                if (hasil > 337) {
                     jalan = true;
                     jalan1 = true;
                     jalan2 = true;

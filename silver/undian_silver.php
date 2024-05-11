@@ -311,7 +311,7 @@ $result    = mysqli_fetch_array($query);
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAkhir" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="4">
+                            <input type="hidden" class="form-control" id="txtAkhir" placeholder="Angka akhir" min="0" value="1>
                         </div>
                         <div class="form-group lblhide">
                             <label for="txtAwal1" hidden>Angka awal</label>
@@ -345,22 +345,6 @@ $result    = mysqli_fetch_array($query);
                             <label for="txtAkhir1" hidden>Angka akhir</label>
                             <input type="hidden" class="form-control" id="txtAkhir4" placeholder="Angka akhir2" min="1" value="9">
                         </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAwal1" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal5" placeholder="Angka awal2" min="1" value="0">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir5" placeholder="Angka akhir2" min="1" value="9">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAwal1" hidden>Angka awal</label>
-                            <input type="hidden" class="form-control" id="txtAwal6" placeholder="Angka awal2" min="1" value="0">
-                        </div>
-                        <div class="form-group lblhide">
-                            <label for="txtAkhir1" hidden>Angka akhir</label>
-                            <input type="hidden" class="form-control" id="txtAkhir6" placeholder="Angka akhir2" min="1" value="9">
-                        </div>
                     </form>
                 </div>
             </div>
@@ -384,7 +368,6 @@ $result    = mysqli_fetch_array($query);
                     <h3 class="col-md-2 h3FontCus" id="lblAngka1"> x </h3>
                     <h3 class="col-md-2 h3FontCus" id="lblAngka2"> x </h3>
                     <h3 class="col-md-2 h3FontCus" id="lblAngka3"> x </h3>
-                    <h3 class="col-md-2 h3FontCus" id="lblAngka4"> x </h3>
                 </div>
                 <div class="card-footers">
                     <button type="button" class="btn btn-block btn-success mt-2 mb-2 mr-2" id="btnBerhenti" disabled hidden>Berhenti</button>
@@ -395,9 +378,9 @@ $result    = mysqli_fetch_array($query);
             $qhadiah = "SELECT tb_win.*,tb_undian.*,tb_prize.*
             FROM tb_win
             JOIN tb_undian ON tb_undian.id_kat_undi = tb_win.kat_undian
-            JOIN tb_prize ON tb_win.hadiah = tb_prize.id_prize
+            JOIN tb_prize ON tb_win.id_prize = tb_prize.id_prize
             where tb_undian.kat_undian = 'silver'
-            AND tb_win.hadiah = '$id_prize'
+            AND tb_win.id_prize = '$id_prize'
                         ";
             $hadiah = mysqli_query($koneksi, $qhadiah);
             ?>
@@ -471,17 +454,10 @@ $result    = mysqli_fetch_array($query);
         var akhir4 = 9;
         var jalan4 = false;
 
-        var awal5 = 0;
-        var akhir5 = 9;
-        var jalan5 = false;
-
-        var awal6 = 0;
-        var akhir6 = 9;
-        var jalan6 = false;
-
         var awal = 0;
         var akhir = 9;
         var jalan = false;
+
         var urlGetDataUndian = "https://kiu.co.id/undian/get-detail-undian.php";
 
         $('#btnHome').click(function() {
@@ -573,10 +549,6 @@ $result    = mysqli_fetch_array($query);
                 alert('Angka Awal Harus diisi!');
             else if ($.trim($('#txtAkhir3').val()) == '')
                 alert('Angka akhir harus diisi!')
-            else if ($.trim($('#txtAwal4').val()) == '')
-                alert('Angka Awal Harus diisi!');
-            else if ($.trim($('#txtAkhir4').val()) == '')
-                alert('Angka akhir harus diisi!')
             else {
                 awal = parseInt($("#txtAwal")[0].value);
                 $("#txtAwal").prop('disabled', true);
@@ -604,15 +576,12 @@ $result    = mysqli_fetch_array($query);
                 $("#txtAkhir2").prop('disabled', true);
                 $("#txtAkhir3").prop('disabled', true);
                 $("#txtAkhir4").prop('disabled', true);
-                $("#txtAkhir5").prop('disabled', true);
-                $("#txtAkhir6").prop('disabled', true);
                 $("#btnAcak").prop('disabled', true);
                 $("#btnBerhenti").prop('disabled', false);
                 $("#lblAngka").text(angkaAcak());
                 $("#lblAngka1").text(angkaAcak1());
                 $("#lblAngka2").text(angkaAcak2());
                 $("#lblAngka3").text(angkaAcak3());
-                $("#lblAngka4").text(angkaAcak4());
 
                 jalan = true;
                 setTimeout('ubahAngkaAcak()', 5);
@@ -626,9 +595,9 @@ $result    = mysqli_fetch_array($query);
 
             var getundi = setInterval(function() {
 
-                let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html() + $('#lblAngka4').html();
+                let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html();
 
-                if (hasil > 46109) {
+                if (hasil > 1710) {
                     jalan = true;
                     jalan1 = true;
                     jalan2 = true;
@@ -664,31 +633,24 @@ $result    = mysqli_fetch_array($query);
             return Math.floor(Math.random() * (akhir3 - awal3 + 1) + awal3);
         }
 
-        function angkaAcak4() {
-            return Math.floor(Math.random() * (akhir4 - awal4 + 1) + awal4);
-        }
-
         function ubahAngkaAcak() {
-            if (jalan == true || jalan1 == true || jalan2 == true || jalan3 == true || jalan4 == true) {
+            if (jalan == true || jalan1 == true || jalan2 == true || jalan3 == true) {
                 document.getElementById("lblAngka").value = $('#lblAngka');
                 document.getElementById("lblAngka1").value = $('#lblAngka1');
                 document.getElementById("lblAngka2").value = $('#lblAngka2');
                 document.getElementById("lblAngka3").value = $('#lblAngka3');
-                document.getElementById("lblAngka4").value = $('#lblAngka4');
 
                 let angka = angkaAcak();
                 let angka1 = angkaAcak1();
                 let angka2 = angkaAcak2();
                 let angka3 = angkaAcak3();
-                let angka4 = angkaAcak4();
 
-                let settings = angka4 - angka4
+                let settings = angka3 - angka3
 
                 $("#lblAngka").text(angka);
                 $("#lblAngka1").text(angka1);
                 $("#lblAngka2").text(angka2);
                 $("#lblAngka3").text(angka3);
-                $("#lblAngka4").text(angka4);
 
                 setTimeout('ubahAngkaAcak()', 5);
 
@@ -709,7 +671,7 @@ $result    = mysqli_fetch_array($query);
 
         function tmplPemenang() {
 
-            let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html() + $('#lblAngka4').html();
+            let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html() + $('#lblAngka3').html();
             console.log(hasil);
 
             let hadiah = $('#result_prize').html()
