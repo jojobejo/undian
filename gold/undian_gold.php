@@ -68,6 +68,7 @@ $result    = mysqli_fetch_array($query);
         .h3noUndian {
             text-align: center;
             font-weight: bold;
+            top: 100px;
         }
 
         .h3tko {
@@ -111,18 +112,18 @@ $result    = mysqli_fetch_array($query);
 
         .posWinSilver {
             position: absolute;
-            top: 500px;
-            left: 240px;
+            top: 390px;
+            left: 190px;
             height: max-content;
             width: 1220px;
         }
 
         .posnoundi {
             position: absolute;
-            top: 250px;
-            left: 350px;
-            width: 1000px;
-            height: 190px;
+            top: 200px;
+            left: 310px;
+            width: 950px;
+            height: 150px;
             border-radius: 50px;
             border-style: solid;
             border: black;
@@ -166,6 +167,7 @@ $result    = mysqli_fetch_array($query);
             /* text-decoration: underline; */
             font-weight: bold;
             font-size: 120px;
+            top: -20px;
         }
 
         .sizes {
@@ -431,7 +433,7 @@ AND tb_win.hadiah = '$id_prize'
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "https://kiu.co.id/undian/get-detail-undian-gold.php";
+        var urlGetDataUndian = "https://10.10.10.13/undian/get-detail-undian-gold.php";
 
 
         $('#btnHome').click(function() {
@@ -453,7 +455,7 @@ AND tb_win.hadiah = '$id_prize'
             $("#formWin").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: 'https://kiu.co.id/undian/saveWinGold.php',
+                    url: 'https://10.10.10.13/undian/saveWinGold.php',
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {

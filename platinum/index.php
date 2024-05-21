@@ -244,7 +244,7 @@ require('../config.php');
             <?php endwhile; ?>
             <div class="row ml-3">
                 <?php while ($row = mysqli_fetch_array($rprize1)) :; ?>
-                    <a href="../platinum/undian_platinum_motor.php?id=<?php echo $row['id_prize'] ?>"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail1 sizes1" style="height: 400px; width: 600px;"></a>
+                    <a href="../platinum/undian_platinum_motor.php?id=<?php echo $row['id_prize'] ?>"> <img src="../images/hadiah/<?php echo $row['img'] ?>" class="img-thumbnail1 sizes1" style="height: 400px; width: 500px;"></a>
             </div>
         <?php endwhile; ?>
 

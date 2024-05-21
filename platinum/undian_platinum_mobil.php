@@ -102,23 +102,20 @@ include "../config.php";
             top: 250px;
         }
 
-        .posCard1 {
+        .posWinSilver {
             position: absolute;
-            top: 420px;
-            left: 350px;
-            width: 1200px;
-            height: 300px;
-            border-radius: 20px;
-            border: black;
-            border-style: solid;
+            top: 390px;
+            left: 190px;
+            height: max-content;
+            width: 1220px;
         }
 
         .posnoundi {
             position: absolute;
-            top: 620px;
-            left: 210px;
-            width: 1400px;
-            height: 190px;
+            top: 550px;
+            left: 310px;
+            width: 1000px;
+            height: 150px;
             border-radius: 50px;
             border-style: solid;
             border: black;
@@ -155,10 +152,11 @@ include "../config.php";
             /* text-decoration: underline; */
             font-weight: bold;
             font-size: 120px;
+            top: -20px;
         }
 
         .sizes {
-            height: 120px;
+            height: 100px;
             position: absolute;
             left: 100px;
             top: 300px;
@@ -167,7 +165,7 @@ include "../config.php";
         .img-thumbnail {
             background-color: transparent;
             border: none;
-            height: 250px;
+            height: 200px;
             width: 150px;
         }
 
@@ -197,8 +195,8 @@ include "../config.php";
 
         .mobil-img {
             position: absolute;
-            left: 100px;
-            top: 220px;
+            left: 200px;
+            top: 190px;
         }
     </style>
 </head>
@@ -270,7 +268,7 @@ include "../config.php";
                         <div class='col md-4'>
                             <div class='row'>
                                 <div class="col md-1">
-                                    <img src="../images/hadiah/<?php echo $row['img'] ?>" class="mobil-img" style="height: 500px; width: 800px;">
+                                    <img src="../images/hadiah/<?php echo $row['img'] ?>" class="mobil-img" style="height: 460px; width: 700px;">
                                     <p id="result_prize" hidden><?php echo $row['id_prize'] ?></p>
                                 </div>
                             </div>
@@ -330,7 +328,7 @@ include "../config.php";
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "https://kiu.co.id/undian/get-detail-undian-platinum.php";
+        var urlGetDataUndian = "https://10.10.10.13/undian/get-detail-undian-platinum.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
@@ -343,7 +341,7 @@ include "../config.php";
             $("#formWin").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: 'https://kiu.co.id/undian/saveWinPlatinum.php',
+                    url: 'https://10.10.10.13/undian/saveWinPlatinum.php',
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
@@ -452,7 +450,7 @@ include "../config.php";
                     jalan2 = false;
                     break;
                 case 8:
-                    if (hasil > 37 && hasil1 == 1) {
+                    if (hasil > 29 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -460,7 +458,7 @@ include "../config.php";
                     }
                     break;
                 case 7:
-                    if (hasil > 37 && hasil1 == 1) {
+                    if (hasil > 29 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -468,7 +466,7 @@ include "../config.php";
                     }
                     break;
                 case 6:
-                    if (hasil > 37 && hasil1 == 1) {
+                    if (hasil > 29 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -476,7 +474,7 @@ include "../config.php";
                     }
                     break;
                 case 5:
-                    if (hasil > 37 && hasil1 == 1) {
+                    if (hasil > 29 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -484,7 +482,7 @@ include "../config.php";
                     }
                     break;
                 case 4:
-                    if (hasil > 37 && hasil1 == 1) {
+                    if (hasil > 29 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -492,7 +490,7 @@ include "../config.php";
                     }
                     break;
                 case 3:
-                    if (hasil > 37 && hasil1 == 1) {
+                    if (hasil > 29 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -500,7 +498,7 @@ include "../config.php";
                     }
                     break;
                 case 2:
-                    if (hasil > 37 && hasil1 == 1) {
+                    if (hasil > 29 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -508,7 +506,7 @@ include "../config.php";
                     }
                     break;
                 case 1:
-                    if (hasil > 37 && hasil1 == 1) {
+                    if (hasil > 29 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;

@@ -56,22 +56,22 @@
 
     .menuSilver {
         position: absolute;
-        top: 400px;
-        left: 400px;
+        top: 450px;
+        left: 350px;
 
     }
 
     .menuGold {
         position: absolute;
-        top: 400px;
-        left: 700px;
+        top: 450px;
+        left: 650px;
 
     }
 
     .menuPlatinum {
         position: absolute;
-        top: 400px;
-        left: 1000px;
+        top: 450px;
+        left: 950px;
 
     }
 
@@ -82,9 +82,9 @@
         color: gold;
         position: absolute;
         font-weight: bold;
-        font-size: 75px;
+        font-size: 100px;
         top: 220px;
-        left: 450px;
+        left: 280px;
     }
 </style>
 
@@ -127,7 +127,7 @@
         // 50 = 2 (Gold)
         // 51 = 3 (Platinum)
         // 52 = 4 (Pengunci/Extra)
-        
+
 
         window.onkeydown = function(event) {
             if (event.keyCode === 49) {
