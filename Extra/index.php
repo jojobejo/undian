@@ -496,7 +496,7 @@ require('../config.php');
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "https://10.10.10.13/undian/get-detail-undian-extra.php";
+        var urlGetDataUndian = "../get-detail-undian-extra.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
@@ -711,7 +711,7 @@ require('../config.php');
 
                 $("#lblAngka").text(angka);
 
-                setTimeout('ubahAngkaAcak()', 50);
+                setTimeout('ubahAngkaAcak()', 5);
 
             } else {
 

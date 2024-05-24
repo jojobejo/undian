@@ -433,7 +433,7 @@ AND tb_win.hadiah = '$id_prize'
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "https://10.10.10.13/undian/get-detail-undian-gold.php";
+        var urlGetDataUndian = "../get-detail-undian-gold.php";
 
 
         $('#btnHome').click(function() {
@@ -455,7 +455,7 @@ AND tb_win.hadiah = '$id_prize'
             $("#formWin").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: 'https://10.10.10.13/undian/saveWinGold.php',
+                    url: '../saveWinGold.php',
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
