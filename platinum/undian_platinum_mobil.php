@@ -450,7 +450,7 @@ include "../config.php";
                     jalan2 = false;
                     break;
                 case 8:
-                    if (hasil > 29 && hasil1 == 1) {
+                    if (hasil > 22 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -458,7 +458,7 @@ include "../config.php";
                     }
                     break;
                 case 7:
-                    if (hasil > 29 && hasil1 == 1) {
+                    if (hasil > 22 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -466,7 +466,7 @@ include "../config.php";
                     }
                     break;
                 case 6:
-                    if (hasil > 29 && hasil1 == 1) {
+                    if (hasil > 22 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -474,7 +474,7 @@ include "../config.php";
                     }
                     break;
                 case 5:
-                    if (hasil > 29 && hasil1 == 1) {
+                    if (hasil > 22 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -482,7 +482,7 @@ include "../config.php";
                     }
                     break;
                 case 4:
-                    if (hasil > 29 && hasil1 == 1) {
+                    if (hasil > 22 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -490,7 +490,7 @@ include "../config.php";
                     }
                     break;
                 case 3:
-                    if (hasil > 29 && hasil1 == 1) {
+                    if (hasil > 22 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -498,7 +498,7 @@ include "../config.php";
                     }
                     break;
                 case 2:
-                    if (hasil > 29 && hasil1 == 1) {
+                    if (hasil > 22 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;
@@ -506,7 +506,7 @@ include "../config.php";
                     }
                     break;
                 case 1:
-                    if (hasil > 29 && hasil1 == 1) {
+                    if (hasil > 22 && hasil1 == 1) {
                         jalan = true;
                     } else {
                         jalan = false;

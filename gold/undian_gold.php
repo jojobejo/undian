@@ -577,7 +577,7 @@ AND tb_win.hadiah = '$id_prize'
 
                 let hasil = $('#lblAngka').html() + $('#lblAngka1').html() + $('#lblAngka2').html();
 
-                if (hasil > 337) {
+                if (hasil > 329) {
                     jalan = true;
                     jalan1 = true;
                     jalan2 = true;
