@@ -460,7 +460,7 @@ $result    = mysqli_fetch_array($query);
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "../get-detail-undian.php";
+        var urlGetDataUndian = "https://kiu.co.id/undian/get-detail-undian.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
@@ -484,7 +484,7 @@ $result    = mysqli_fetch_array($query);
             $("#formWin").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: '../save-win-silver.php',
+                    url: 'https://kiu.co.id/undian/save-win-silver.php',
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
