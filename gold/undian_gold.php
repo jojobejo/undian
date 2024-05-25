@@ -296,7 +296,6 @@ $result    = mysqli_fetch_array($query);
             <div class="card posCard1 card-pilih" hidden>
                 <div class="card-header ">
                     <h3 class="silver">UNDIAN GOLD</h2>
-
                 </div>
                 <div class="card-body">
                     <form id="frmAngka" method="post" action="index.html">
