@@ -183,7 +183,7 @@ require('../config.php');
 
         .posnoundi {
             position: absolute;
-            top: 500px;
+            top: 550px;
             left: 250px;
             width: 1200px;
             height: 180px;

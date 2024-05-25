@@ -112,7 +112,7 @@ $result    = mysqli_fetch_array($query);
 
         .posWinSilver {
             position: absolute;
-            top: 390px;
+            top: 470px;
             left: 190px;
             height: max-content;
             width: 1220px;
@@ -120,7 +120,7 @@ $result    = mysqli_fetch_array($query);
 
         .posnoundi {
             position: absolute;
-            top: 200px;
+            top: 250px;
             left: 310px;
             width: 950px;
             height: 150px;
@@ -131,7 +131,7 @@ $result    = mysqli_fetch_array($query);
 
         .poswin1 {
             position: absolute;
-            top: 150px;
+            top: 300px;
             left: -10px;
         }
 
@@ -234,7 +234,7 @@ $result    = mysqli_fetch_array($query);
 
         table.fontTb {
             font-weight: 800;
-            font-size: 16px;
+            font-size: 30px;
         }
 
         .borderless td,
@@ -264,7 +264,7 @@ $result    = mysqli_fetch_array($query);
 
         .tbwin1 {
             min-height: 10px;
-            height: 50px;
+            height: 100px;
         }
 
         .tbwin2 {
@@ -296,7 +296,6 @@ $result    = mysqli_fetch_array($query);
             <div class="card posCard1 card-pilih" hidden>
                 <div class="card-header ">
                     <h3 class="silver">UNDIAN GOLD</h2>
-
                 </div>
                 <div class="card-body">
                     <form id="frmAngka" method="post" action="index.html">
@@ -365,11 +364,11 @@ JOIN tb_prize ON tb_win.hadiah = tb_prize.id_prize
 where tb_undian.kat_undian = 'gold'
 AND tb_win.hadiah = '$id_prize'
             ";
-            $hadiah = mysqli_query($koneksi, $qhadiah);
+            $hadiah = mysqli_query($koneksi, $qhadiah); 
             ?>
             <div class=" card posWinSilver">
                 <div class="card-header">
-                    <h3>Pememenang Undian - <?= $result['nama_prize'] ?></h3>
+                    <h3 style="font-size: 32px;">Pemenang Undian - <?= $result['nama_prize'] ?></h3>
                 </div>
                 <table class="fontTb borderless tbwin1">
                     <thead>

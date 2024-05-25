@@ -287,7 +287,7 @@ require('../config.php');
         var awal = 0;
         var akhir = 9;
         var jalan = false;
-        var urlGetDataUndian = "http://10.10.10.13/undian/get-detail-undian-platinum.php";
+        var urlGetDataUndian = "../get-detail-undian-platinum.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"

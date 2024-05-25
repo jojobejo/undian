@@ -112,7 +112,7 @@ include "../config.php";
 
         .posnoundi {
             position: absolute;
-            top: 550px;
+            top: 600px;
             left: 310px;
             width: 1000px;
             height: 150px;

@@ -114,7 +114,7 @@ $result    = mysqli_fetch_array($query);
 
         .posWinSilver {
             position: absolute;
-            top: 390px;
+            top: 450px;
             left: 190px;
             height: max-content;
             width: 1220px;
@@ -122,7 +122,7 @@ $result    = mysqli_fetch_array($query);
 
         .posnoundi {
             position: absolute;
-            top: 200px;
+            top: 230px;
             left: 310px;
             width: 950px;
             height: 150px;
@@ -236,7 +236,7 @@ $result    = mysqli_fetch_array($query);
 
         table.fontTb {
             font-weight: 800;
-            font-size: 16px;
+            font-size: 35px;
         }
 
         .borderless td,
@@ -261,12 +261,12 @@ $result    = mysqli_fetch_array($query);
             display: flex;
             flex-direction: column;
             flex-flow: column wrap;
-            height: 130px;
+            height: 150px;
         }
 
         .tbwin1 {
-            min-height: 10px;
-            height: 50px;
+            min-height: 20px;
+            height: 70px;
         }
 
         .tbwin2 {
@@ -388,7 +388,7 @@ $result    = mysqli_fetch_array($query);
             ?>
             <div class=" card posWinSilver">
                 <div class="card-header">
-                    <h3>Pememenang Undian - <?= $result['nama_prize'] ?></h3>
+                    <h2 class="fontTb">Pemenang Undian - <?= $result['nama_prize'] ?></h2>
                 </div>
                 <table class="fontTb borderless tbwin1">
                     <thead>
@@ -405,7 +405,7 @@ $result    = mysqli_fetch_array($query);
                             <tr>
                                 <td class="a" width="10%" style="padding-top: 10px;"><?php echo $no; ?>.</td>
                                 <td class="b" width="80%" style="padding-top: 15px;"><?php echo $h['nama_toko'] ?></td>
-                                <td class="c" width="10%" style="padding-top: 15px;"><?php echo $h['nomor_undian'] ?></td>
+                                <td class="c" width="10%" style="padding-top: 15px;  margin-bottom: 5px;"><?php echo $h['nomor_undian'] ?></td>
                             </tr>
                         <?php }; ?>
                     </tbody>
@@ -428,7 +428,6 @@ $result    = mysqli_fetch_array($query);
                     </div>
                 </div>
             </div>
-
         </center>
     </div>
 
@@ -460,7 +459,7 @@ $result    = mysqli_fetch_array($query);
         var akhir = 9;
         var jalan = false;
 
-        var urlGetDataUndian = "https://kiu.co.id/undian/get-detail-undian.php";
+        var urlGetDataUndian = "../get-detail-undian.php";
 
         $('#btnHome').click(function() {
             location.href = "../index.php"
@@ -484,7 +483,7 @@ $result    = mysqli_fetch_array($query);
             $("#formWin").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
-                    url: 'https://kiu.co.id/undian/save-win-silver.php',
+                    url: '../save-win-silver.php',
                     type: 'post',
                     data: $(this).serialize(),
                     success: function(data) {
